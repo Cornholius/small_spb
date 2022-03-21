@@ -1,0 +1,59 @@
+{% block contact_us %}
+<main class="main">
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <a class="breadcrumbs__link" href="#">Главная</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <p class="breadcrumbs__link breadcrumbs__link--cursor">Обратная связь</p>
+                </li>
+            </ul>
+        </div>
+    </div><div class="container">
+    <div class="map">
+        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Яндекс Карты</a><a href="https://yandex.ru/maps/?ll=30.756963%2C60.049370&mode=whatshere&source=wizgeo&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=30.770198%2C60.054067&whatshere%5Bzoom%5D=14.87&z=14.67" style="color:#eee;font-size:12px;position:absolute;top:14px;">ДНП Малый Петербург — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUBqFb-CD" width="100%" height="578" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+    </div></div>
+    <section class="contact">
+        <div class="container">
+            <h3 class="contact__title">Обратная связь</h3>
+            <ul class="contact__social">
+                <li class="contact__social-item">
+                    <a class="contact__social-link" href="#">
+                        <img class="contact__social-link" src="images/small_spb/soc/facebook.svg" alt="facebook"></a>
+                </li>
+                <li class="contact__social-item">
+                    <a class="contact__social-link" href="#">
+                        <img class="contact__social-link" src="images/small_spb/soc/instagram.svg" alt="instagram"></a>
+                </li>
+                <li class="contact__social-item">
+                    <a class="contact__social-link" href="#">
+                        <img class="contact__social-link" src="images/small_spb/soc/pinterest.svg" alt="pinterest"></a>
+                </li>
+                <li class="contact__social-item">
+                    <a class="contact__social-link" href="#">
+                        <img class="contact__social-link" src="images/small_spb/soc/whatsapp.svg" alt="whatsapp"></a>
+                </li>
+                <li class="contact__social-item">
+                    <a class="contact__social-link" href="#">
+                        <img class="contact__social-link" src="images/small_spb/soc/youtube.svg" alt="youtube"></a>
+                </li>
+            </ul>
+            <div class="contact__box">
+                <p class="contact__text">Напишите нам, если есть вопросы.</p>
+                <div class="contact__city">188676, Ленинградская область, Всеволожский р-н, п Щеглово, Итальянская ул., д. 1
+                </div>
+            </div>
+
+            <form class="contact__form" action="">
+                <input class="contact__form-input" placeholder="Имя" type="text">
+                <input class="contact__form-input" placeholder="E-mail" type="email">
+                <input class="contact__form-input" placeholder="Тема письма:" type="text">
+                <textarea class="contact__form-area" placeholder="Текст сообщения:"></textarea>
+                <button class="contact__form-btn" type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

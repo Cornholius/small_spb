@@ -1,0 +1,18 @@
+{% block best %}
+<section class="news" id="news">
+    <div class="container">
+        <div class="news__inner">
+            <h2 class="news__title">Новости</h2>
+            {% for i in news %}
+                <div class="news__item">
+                    <div class="news__wrapper">
+                        <h3 class="news__item-title">{{i.title}}</h3>
+                        <p class="news__item-text">{{i.text}}</p>
+                        <p class="news__item-date">ололо дата</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
