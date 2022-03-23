@@ -2,7 +2,7 @@ $(function () {
 
     $(".services__inner").on("click","a", function (event) {
         //отменяем стандартную обработку нажатия по ссылке
-//        event.preventDefault();
+  
 
         //забираем идентификатор бока с атрибута href
         var id  = $(this).attr('href'),
@@ -13,11 +13,24 @@ $(function () {
         //анимируем переход на расстояние - top за 1000 мс
         $('body,html').animate({scrollTop: top}, 1000);
     });
-  
 
 
+    $(".news__item").each(function() {
+      let hide = $(this).find(".news__wrapper")
+      $('.news-button', this).click(function(){
+
+        hide.toggleClass('news__wrapper--height');  
+        if (hide.hasClass('news__wrapper--height')) {
+          $(this).html('Скрыть');
+        } else {
+         $(this).html('Полный текст')
+       }   
+       return false;
+
+     }); 
 
 
+    }); 
     $('.menu__btn').on('click', function () {
         $('.menu__list').toggleClass('menu__list--active')
     });
@@ -27,7 +40,7 @@ $(function () {
 
   slidesToShow: 5,
   swipe:false,
-  dots: false,
+  dots:false,
     prevArrow:'<button type="button" class=" slick-arrow slick-prev"><img src="images/small_spb/Arrow-left.svg"></button>',
     nextArrow:'<button type="button" class="slick-arrow slick-next"><img src="images/small_spb/Arrow-riht.svg"></button>',
   responsive: [
@@ -36,7 +49,7 @@ $(function () {
       settings: {
         arrows: true,
         swipe:false,
-        dots: false,
+        dots:false,
        
         slidesToShow: 3,
       }
@@ -115,6 +128,9 @@ $(function () {
 
     window.addEventListener('scroll', trackScroll);
     goTopBtn.addEventListener('click', backToTop);
+
+
+
 
 });
 

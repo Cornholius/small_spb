@@ -1,60 +1,43 @@
 {% block services %}
 {% load static %}
-<section class="services">
-        <div class="container">
-            <div class="services__inner">
-                <div class="services__slider">
-                    <a class="services__item" href="{% url 'news' %}">
-                        <div class="services__item-inner" style="background-color: #3366CC;">
-                            <img src="{% static 'images/small_spb/3.png' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Новости</h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner" style="background-color: #3366CC;">
-                            <img src="{% static 'images/small_spb/item-2.svg' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Показания эл.энергии </h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner">
-                            <img src="{% static 'images/small_spb/2.png' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Документы</h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner">
-                            <img src="{% static 'images/small_spb/item-4.svg' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Должники</h6>
-                        </div>
-                    </a>
 
-                    <a class="services__item" href="{% url 'feedback' %}">
-                        <div class="services__item-inner" style="background-color: #3366CC;">
-                            <img src="{% static 'images/small_spb/6.png' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Обратная связь</h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner">
-                            <img src="{% static 'images/small_spb/1.png' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Истрия поселка</h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner">
-                            <img src="{% static 'images/small_spb/5.png' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">О нас</h6>
-                        </div>
-                    </a>
-                    <a class="services__item" href="{% url 'electricity' %}">
-                        <div class="services__item-inner">
-                            <img src="{% static 'images/small_spb/item-4.svg' %}" alt="" class="services__item-img">
-                            <h6 class="services__item-title">Реквизиты</h6>
-                        </div>
-                    </a>
-                </div>
+<section class="services">
+    <div class="container">
+        <div class="services__inner">
+            <div class="services__slider">
+                <a class="services__item" href="{% url 'electricity' %}">
+                    <div class="services__item-inner">
+                        <img src="{% static 'images/small_spb/item-2.svg' %}" alt="" class="services__item-img">
+                        <h6 class="services__item-title">Показания эл.энергии </h6>
+                    </div>
+                </a>
+                <a class="services__item" href="{% url 'news' %}">
+                    <div class="services__item-inner">
+                        <img src="{% static 'images/small_spb/2.png' %}" alt="" class="services__item-img">
+                        <h6 class="services__item-title">Документы</h6>
+                    </div>
+                </a>
+                <a class="services__item" href="{% url 'news' %}">
+                    <div class="services__item-inner">
+                        <img src="{% static 'images/small_spb/item-4.svg' %}" alt="" class="services__item-img">
+                        <h6 class="services__item-title">Должники</h6>
+                    </div>
+                </a>
+                <a class="services__item" href="{% url 'feedback' %}">
+                    <div class="services__item-inner">
+                        <img src="{% static 'images/small_spb/6.png' %}" alt="" class="services__item-img">
+                        <h6 class="services__item-title">Обратная связь</h6>
+                    </div>
+                </a>
+                <a class="services__item" href="{% url 'content' %}">
+                    <div class="services__item-inner">
+                        <img src="{% static 'images/small_spb/5.png' %}" alt="" class="services__item-img">
+                        <h6 class="services__item-title">О нас</h6>
+                    </div>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 {% endblock %}

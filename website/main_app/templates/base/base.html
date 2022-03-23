@@ -15,6 +15,7 @@
 
 <body>
 
+<!--  Шапка  -->
 {% block header %}
 {% include 'components/header.html' %}
 {% endblock %}
@@ -28,13 +29,21 @@
 {% include 'components/box-subtitle.html' %}
 {% endblock %}
 
-{% block elec_table %}
-{% endblock %}
+<!--  Главная страница  -->
 {% block news %}
 {% endblock %}
+
+<!-- Показания Электроэнергии  -->
+{% block elec_table %}
+{% endblock %}
+
+<!--  Обратная связь  -->
 {% block contact_us %}
 {% endblock %}
 
+<!--  О нас  -->
+{% block content %}
+{% endblock %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static 'js/slick.min.js'%}"></script>

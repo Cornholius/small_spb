@@ -27,3 +27,9 @@ class FeedbackView(View):
 
     def get(self, request):
         return render(request, 'pages/feedback.html')
+
+
+class ContentView(View):
+
+    def get(self, request):
+        return render(request, 'pages/about_us.html')

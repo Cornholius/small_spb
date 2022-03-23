@@ -1,22 +1,25 @@
-            <div class="about" id="about">
-                    <div class="about__item" style="background-image: url('images/small_spb/prscr-4.PNG');">
-                        <div class="about__box">
-                            <div class="about__box-wrapper">
-                                <h3 class="about__box-title">Часы приема бухгалтера:</h3>
-                                <p class="about__box-text">среда с 18:00 - 21:00<br>воскресенье с 16:00 - 20:00<br>В здании правления, находящееся возле КПП.</p>
-                                <h3 class="about__box-title">Телефон охраны:</h3>
-                                <a class="about__box-link" href="tel:+79531445148">+7(953)144-51-48</a>
-                                <h3 class="about__box-title">Телефон председателя:</h3>
-                                <a class="about__box-link" href="tel:+79112165953">+7(911)216-59-53</a>
-                                <p class="about__box-text">Малькова Наталья Николаевна</p>
-                                <h3 class="about__box-title">Телефоны экстренных служб:</h3>
-                                <p class="about__box-text">Межрайгаз:</p>
-                                <a class="about__box-link" href="tel:+78137040388">+7(813)704-03-88</a>
-                                <p class="about__box-text">Участковый:</p>
-                                <a class="about__box-link" href="tel:+79990454719">+7(999)045-47-19</a>
-                                <p class="about__box-text">Скорая помощь:</p>
-                                <a class="about__box-link" href="tel:+78137020422">+7(813)702-04-22</a>
-                            </div>
-                        </div>
-                    </div>
+{% load static %}
+{% block about %}
+<div class="about" id="about">
+    <div class="about__item" style="background-image: url('{% static 'images/small_spb/prscr-4.PNG' %}');">
+        <div class="about__box">
+            <div class="about__box-wrapper">
+                <h3 class="about__box-title">Часы приема бухгалтера:</h3>
+                <p class="about__box-text">среда с 18:00 - 21:00<br>воскресенье с 16:00 - 20:00<br>В здании правления, находящееся возле КПП.</p>
+                <h3 class="about__box-title">Телефон охраны:</h3>
+                <a class="about__box-link" href="tel:+79531445148">+7(953)144-51-48</a>
+                <h3 class="about__box-title">Телефон председателя:</h3>
+                <a class="about__box-link" href="tel:+79112165953">+7(911)216-59-53</a>
+                <p class="about__box-text">Малькова Наталья Николаевна</p>
+                <h3 class="about__box-title">Телефоны экстренных служб:</h3>
+                <p class="about__box-text">Межрайгаз:</p>
+                <a class="about__box-link" href="tel:+78137040388">+7(813)704-03-88</a>
+                <p class="about__box-text">Участковый:</p>
+                <a class="about__box-link" href="tel:+79990454719">+7(999)045-47-19</a>
+                <p class="about__box-text">Скорая помощь:</p>
+                <a class="about__box-link" href="tel:+78137020422">+7(813)702-04-22</a>
             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

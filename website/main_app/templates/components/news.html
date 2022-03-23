@@ -1,17 +1,34 @@
-{% block best %}
-<section class="news" id="news">
+{% block news %}
+<section class="news">
     <div class="container">
         <div class="news__inner">
             <h2 class="news__title">Новости</h2>
             {% for i in news %}
-                <div class="news__item">
-                    <div class="news__wrapper">
-                        <h3 class="news__item-title">{{i.title}}</h3>
-                        <p class="news__item-text">{{i.text}}</p>
-                        <p class="news__item-date">ололо дата</p>
-                    </div>
+            <div class="news__item">
+                <div class="news__wrapper">
+                    <h3 class="news__item-title">{{i.title}}</h3>
+                    <p class="news__item-text">{{i.text}}</p>
                 </div>
+                <p class="news__item-date">дата</p>
+                <button class="news-button">Полный текст</button>
+            </div>
             {% endfor %}
+        </div>
+        <div class="pagination">
+            <a class="pagination__arrow pagination__arrow--disabled" href="#">
+                <img class="pagination__arrow-icon" src="images/small_spb/arrow-left-pagin.svg" alt="arrow icon">
+            </a>
+            <ul class="pagination__list">
+                <li class="pagination__list-item">
+                    <a class="pagination__list-num pagination__list-num--active" href="#">1</a>
+                </li>
+                <li class="pagination__list-item">
+                    <a class="pagination__list-num " href="#">2</a>
+                </li>
+            </ul>
+            <a class="pagination__arrow" href="#">
+                <img class="pagination__arrow-icon" src="images/small_spb/arrow-right-pagin.svg" alt="arrow icon">
+            </a>
         </div>
     </div>
 </section>
