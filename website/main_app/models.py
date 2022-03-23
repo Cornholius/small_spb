@@ -1,3 +1,4 @@
+import time
 from django.db import models
 
 
@@ -18,3 +19,19 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Documents(models.Model):
+    name = models.CharField(max_length=100)
+    document = models.FileField(upload_to='documents/')
+
+    def __str__(self):
+        return self.name
+
+
+class Debtors(models.Model):
+    debtor = models.CharField(max_length=100)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.debtor

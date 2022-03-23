@@ -1,0 +1,23 @@
+{% block doc_list %}
+
+<main class="main">
+    {% block breadcrumbs %}
+    {% include 'components/breadcrumbs.html' %}
+    {% endblock %}
+    <div class="documents">
+        <div class="container">
+            <div class="documents__wrapper">
+                <div class="documents__inner">
+                    <h3 class="documents__title">Документы:</h3>
+                    <ul class="documents__list">
+                        {% for doc in docs %}
+                        <li class="documents__item">
+                            <a href="{{doc.document.url}}" class="documents__item-link">{{doc.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

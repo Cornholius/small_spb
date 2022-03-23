@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from .models import News
+from .models import News, Documents
 
 
 class MainView(View):
@@ -33,3 +33,16 @@ class ContentView(View):
 
     def get(self, request):
         return render(request, 'pages/about_us.html')
+
+
+class DebtorsView(View):
+
+    def get(self, request):
+        return render(request, 'pages/debtors.html')
+
+
+class DocumentsView(View):
+
+    def get(self, request):
+        docs = Documents.objects.all()
+        return render(request, 'pages/documents.html', {'docs': docs})

@@ -9,4 +9,6 @@ urlpatterns = [
     path('news/', views.NewsView.as_view(), name='news'),
     path('content/', views.ContentView.as_view(), name='content'),
     path('feedback/', views.FeedbackView.as_view(), name='feedback'),
+    path('debstors/', views.DebtorsView.as_view(), name='debstors'),
+    path('documents/', views.DocumentsView.as_view(), name='documents'),
 ]

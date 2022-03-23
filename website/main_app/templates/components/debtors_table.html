@@ -1,0 +1,36 @@
+{% block debtors_table %}
+
+<main class="main">
+  {% block breadcrumbs %}
+  {% include 'components/breadcrumbs.html' %}
+  {% endblock %}
+  <div class="debtors">
+    <div class="container">
+      <div class="debtors__wrapper">
+        <h3 class="debtors__title">ДОЛЖНИКИ НА 02.02.22<h3>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>№ пп</th>
+              <th>№ л/с</th>
+              <th>Ежемес.взнос/посл.опл.м-ц</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td>3</td>
+              <td>Февраль 2021</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>4</td>
+              <td>Сентябрь 2021</td>
+            </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
