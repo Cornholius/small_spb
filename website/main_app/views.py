@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from .models import News, Documents
+from .models import News, Documents, MeterReadings, Debtors
 
 
 class MainView(View):
@@ -13,7 +13,8 @@ class MainView(View):
 class ElectricityTableView(View):
 
     def get(self, request):
-        return render(request, 'pages/electricity.html')
+        electricity = MeterReadings.objects.all()
+        return render(request, 'pages/electricity.html', {'electricity': electricity})
 
 
 class NewsView(View):
@@ -38,7 +39,8 @@ class ContentView(View):
 class DebtorsView(View):
 
     def get(self, request):
-        return render(request, 'pages/debtors.html')
+        debtors = Debtors.objects.all()
+        return render(request, 'pages/debtors.html', {'debtors': debtors})
 
 
 class DocumentsView(View):

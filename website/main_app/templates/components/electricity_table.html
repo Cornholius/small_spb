@@ -10,29 +10,19 @@
                     <tr>
                         <th>№ участка</th>
                         <th>№ лицевого счета </th>
-                        <th>счета  текущие показания день</th>
+                        <th>текущие показания день</th>
                         <th>текущие показания ночь</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in electricity %}
                     <tr>
-                        <td>1</td>
-                        <td>005/58200034</td>
-                        <td>24359</td>
-                        <td>12456</td>
+                        <td>{{i.area_number}}</td>
+                        <td>{{i.personal_account}}</td>
+                        <td>{{i.current_day}}</td>
+                        <td>{{i.current_night}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>005/58200034</td>
-                        <td>24359</td>
-                        <td>12456</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>005/58200034</td>
-                        <td>24359</td>
-                        <td>12456</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

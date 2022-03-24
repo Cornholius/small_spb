@@ -7,26 +7,23 @@
   <div class="debtors">
     <div class="container">
       <div class="debtors__wrapper">
-        <h3 class="debtors__title">ДОЛЖНИКИ НА 02.02.22<h3>
+<!--        <h3 class="debtors__title">ДОЛЖНИКИ НА 02.02.22</h3>-->
           <table class="table">
             <thead>
             <tr>
-              <th>№ пп</th>
-              <th>№ л/с</th>
-              <th>Ежемес.взнос/посл.опл.м-ц</th>
+              <th>№ платёжного поручения</th>
+              <th>№ лицевого счёта</th>
+              <th>Ежемесячный взнос/Последний оплаченный месяц</th>
             </tr>
             </thead>
             <tbody>
+            {% for i in debtors %}
             <tr>
-              <td>1</td>
-              <td>3</td>
-              <td>Февраль 2021</td>
+              <td>{{i.payment_order}}</td>
+              <td>{{i.personal_account}}</td>
+              <td>{{i.last_paid_month}}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>4</td>
-              <td>Сентябрь 2021</td>
-            </tr>
+            {% endfor %}
             </tbody>
           </table>
       </div>
