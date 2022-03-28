@@ -1,5 +1,5 @@
-import datetime
-import time
+from .utils import rename_main_picture
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.urls import reverse
 
@@ -53,10 +53,21 @@ class Debtors(models.Model):
     payment_order = models.IntegerField(default=0, verbose_name='№ платёжного поручения')
     personal_account = models.CharField(default='', max_length=100, verbose_name='№ лицевого счёта')
     last_paid_month = models.CharField(default='', max_length=100, verbose_name='Последний оплаченный месяц')
-    #
-    # def __str__(self):
-    #     return self.payment_order
 
     class Meta:
         verbose_name = 'Должник'
         verbose_name_plural = 'Должники'
+
+
+class MainPicture(models.Model):
+    picture = models.ImageField(upload_to=rename_main_picture)
+
+    def save(self, *args, **kwargs):
+        try:
+            this = MainPicture.objects.all()
+            for i in this:
+                # print(i)
+                i.delete()
+        except ObjectDoesNotExist:
+            pass
+        super(MainPicture, self).save(*args, **kwargs)

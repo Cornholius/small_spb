@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
     'main_app',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -138,4 +139,4 @@ if DEBUG is True:
 else:
     STATIC_ROOT = static_path
 
-
+IMPORT_EXPORT_USE_TRANSACTIONS = True
