@@ -14,8 +14,13 @@
 </head>
 
 <body>
-
-<!--  Шапка  -->
+                    {% for i in News %}
+                    <tr>
+                        <td>{{i.title}}</td>
+                        <td>{{i.text}}</td>
+                    </tr>
+                    {% endfor %}
+                    <!--  Шапка  -->
 {% block header %}
 {% include 'components/header.html' %}
 {% endblock %}

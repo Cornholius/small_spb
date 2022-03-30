@@ -63,11 +63,7 @@ class MainPicture(models.Model):
     picture = models.ImageField(upload_to=rename_main_picture)
 
     def save(self, *args, **kwargs):
-        try:
-            this = MainPicture.objects.all()
-            for i in this:
-                # print(i)
-                i.delete()
-        except ObjectDoesNotExist:
-            pass
+        this = MainPicture.objects.all()
+        for i in this:
+            i.delete()
         super(MainPicture, self).save(*args, **kwargs)
