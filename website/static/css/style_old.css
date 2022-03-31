@@ -73,25 +73,6 @@ a{
 .menu__list-item + .menu__list-item{
     margin-left:35px;
 }
-.menu__list-item--input-style{
-        border: 1px solid #DFDFDF;
-       padding: 6px 17px;
-       border-radius:20px;
-       margin-bottom:20px;
-      
-       
-}
-.menu__list-item--input-style::placeholder{
-         color: #A1A1A1;
-          font-family: 'Roboto Condensed', sans-serif;
-         font-weight:400;
-         font-size:16px;
-         line-height:27px;
-       }
-
-
-
-
 .menu__list-link{
     color: #fff;
     font-size: 22px;
@@ -933,6 +914,7 @@ padding-bottom: 40px;
     cursor: pointer;
 }
 .table{
+    margin: 30px auto;
     border: none;
     font-family: 'Montserrat', sans-serif;
     letter-spacing:1px ;   

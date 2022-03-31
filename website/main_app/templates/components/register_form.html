@@ -1,0 +1,35 @@
+{% block register_form %}
+<div class="wrapper">
+  <div class="form">
+    <form action="#" id="form" class="form__body">
+      <div class="form__item">
+        <label for="formName" class="form__label">Фамилия*</label>
+        <input type="text" name="name" class="form__input _req">
+      </div>
+      <div class="form__item">
+        <label for="formName" class="form__label">Имя*</label>
+        <input type="text" name="name" class="form__input _req">
+      </div>
+      <div class="form__item">
+        <label for="formName" class="form__label">Отчество*</label>
+        <input type="text" name="name" class="form__input _req">
+      </div>
+      <div class="form__item">
+        <label for="formEmail" class="form__label">E-mail*</label>
+        <input type="text" name="email" class="form__input _req _email">
+      </div>
+      <div class="form__item">
+        <label for="formTell" class="form__label">Телефон*</label>
+        <input type="tel" name="tel" class="form__input _req _email">
+      </div>
+      <div class="form__item">
+        <label for="formNumber" class="form__label">№ Участка*</label>
+        <input  type="number" name="number" class="form__input _req _email">
+      </div>
+
+      <button type="submit" class="form__button">Отправить</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

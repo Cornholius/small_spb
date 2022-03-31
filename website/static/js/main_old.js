@@ -1,7 +1,7 @@
 $(function () {
 
     $(".services__inner").on("click","a", function (event) {
-        
+        //отменяем стандартную обработку нажатия по ссылке
   
 
         //забираем идентификатор бока с атрибута href
@@ -88,7 +88,7 @@ $(function () {
     }
   ]
 });
-  $('.cart__item-img, .galery__item-img').click(function(event) {
+  $('.about__item-img').click(function(event) {
     var i_path = $(this).attr('src');
     $('body').append('<div id="overlay"></div><div id="magnify"><img src="'+i_path+'"><div id="close-popup"><i></i></div></div>');
     $('#magnify').css({

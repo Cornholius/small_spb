@@ -14,13 +14,8 @@
 </head>
 
 <body>
-                    {% for i in News %}
-                    <tr>
-                        <td>{{i.title}}</td>
-                        <td>{{i.text}}</td>
-                    </tr>
-                    {% endfor %}
-                    <!--  Шапка  -->
+
+<!--  Шапка  -->
 {% block header %}
 {% include 'components/header.html' %}
 {% endblock %}
@@ -57,6 +52,11 @@
 <!--  О нас  -->
 {% block content %}
 {% endblock %}
+
+<!--  Регистрация  -->
+{% block register_form %}
+{% endblock %}
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static 'js/slick.min.js'%}"></script>

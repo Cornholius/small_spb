@@ -11,7 +11,7 @@ admin.site.site_header = 'ololo2'
 class MeterReadingsAdmin(ImportExportActionModelAdmin):
     list_display = ('id', 'area_number', 'personal_account', 'current_day', 'current_night')
     search_fields = ('area_number', 'personal_account')
-    list_editable = ('area_number', 'personal_account', 'current_day', 'current_night')
+    list_editable = ('current_day', 'current_night')
 
 
 @admin.register(News)

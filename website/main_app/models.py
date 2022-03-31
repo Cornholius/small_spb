@@ -1,13 +1,8 @@
 import os
-from sys import platform
 from pathlib import Path
-
-
 from .utils import rename_main_picture
 from django.db import models
 from django.urls import reverse
-
-
 
 
 class MeterReadings(models.Model):
@@ -74,19 +69,9 @@ class MainPicture(models.Model):
         for i in this:
             try:
                 os.remove(os.path.join('media', 'logo', 'logo.jpg'))
-                print('logo removed')
-                # i.delete()
-                print('i deleted')
-
             except Exception:
                 print('nothing to delete')
-            # if platform == 'win32':
-                # print(os.path.exists(os.path.join('media', 'logo', 'logo.jpg')))
-                # os.remove(os.path.join('media', 'logo', 'logo.jpg'))
-                # os.remove(f"/media/logo', {i.picture.name}")
-            # print(f"{self.BASE_DIR}\media{i.picture}")
         super().save(*args, **kwargs)
-        print('saved', *args, **kwargs)
 
     def __str__(self):
         return 'Фото главной страницы'
