@@ -33,8 +33,18 @@ class DebtorsAdmin(admin.ModelAdmin):
     search_fields = ('payment_order', 'personal_account', 'last_paid_month')
 
 
+@admin.register(MainPicture)
+class MainPictureAdmin(admin.ModelAdmin):
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 # admin.site.register(MeterReadings, MeterReadingsAdmin)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)
 # admin.site.register(Debtors, DebtorsAdmin)
-admin.site.register(MainPicture)
+# admin.site.register(MainPicture)

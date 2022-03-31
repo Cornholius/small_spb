@@ -1,7 +1,13 @@
+import os
+from sys import platform
+from pathlib import Path
+
+
 from .utils import rename_main_picture
-from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.urls import reverse
+
+
 
 
 class MeterReadings(models.Model):
@@ -60,10 +66,31 @@ class Debtors(models.Model):
 
 
 class MainPicture(models.Model):
-    picture = models.ImageField(upload_to=rename_main_picture)
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    picture = models.ImageField(upload_to=rename_main_picture, verbose_name='Фото главного экрана')
 
     def save(self, *args, **kwargs):
         this = MainPicture.objects.all()
         for i in this:
-            i.delete()
-        super(MainPicture, self).save(*args, **kwargs)
+            try:
+                os.remove(os.path.join('media', 'logo', 'logo.jpg'))
+                print('logo removed')
+                # i.delete()
+                print('i deleted')
+
+            except Exception:
+                print('nothing to delete')
+            # if platform == 'win32':
+                # print(os.path.exists(os.path.join('media', 'logo', 'logo.jpg')))
+                # os.remove(os.path.join('media', 'logo', 'logo.jpg'))
+                # os.remove(f"/media/logo', {i.picture.name}")
+            # print(f"{self.BASE_DIR}\media{i.picture}")
+        super().save(*args, **kwargs)
+        print('saved', *args, **kwargs)
+
+    def __str__(self):
+        return 'Фото главной страницы'
+
+    class Meta:
+        verbose_name = 'Изменяемый объект'
+        verbose_name_plural = 'Изменяемые объекты'
