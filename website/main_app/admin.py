@@ -11,7 +11,7 @@ admin.site.site_header = 'ololo2'
 class MeterReadingsAdmin(ImportExportActionModelAdmin):
     list_display = ('id', 'area_number', 'personal_account', 'current_day', 'current_night')
     search_fields = ('area_number', 'personal_account')
-    list_editable = ('area_number', 'personal_account', 'current_day', 'current_night')
+    list_editable = ('current_day', 'current_night')
 
 
 @admin.register(News)
@@ -33,8 +33,18 @@ class DebtorsAdmin(admin.ModelAdmin):
     search_fields = ('payment_order', 'personal_account', 'last_paid_month')
 
 
+@admin.register(MainPicture)
+class MainPictureAdmin(admin.ModelAdmin):
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 # admin.site.register(MeterReadings, MeterReadingsAdmin)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)
 # admin.site.register(Debtors, DebtorsAdmin)
-admin.site.register(MainPicture)
+# admin.site.register(MainPicture)
