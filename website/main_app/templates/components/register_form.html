@@ -1,34 +1,44 @@
 {% block register_form %}
 <div class="wrapper">
   <div class="form">
-    <form action="#" id="form" class="form__body">
+    <form method="POST" action="#" id="form" class="form__body">{% csrf_token %}
+      <div class="form__item">
+        <label for="formName" class="form__label">Логин*</label>
+        {{ form.username }}
+      </div>
       <div class="form__item">
         <label for="formName" class="form__label">Фамилия*</label>
-        <input type="text" name="name" class="form__input _req">
+        {{ form.last_name }}
       </div>
       <div class="form__item">
         <label for="formName" class="form__label">Имя*</label>
-        <input type="text" name="name" class="form__input _req">
+        {{ form.first_name }}
       </div>
       <div class="form__item">
         <label for="formName" class="form__label">Отчество*</label>
-        <input type="text" name="name" class="form__input _req">
+        {{ form.middle_name }}
       </div>
       <div class="form__item">
         <label for="formEmail" class="form__label">E-mail*</label>
-        <input type="text" name="email" class="form__input _req _email">
+        {{ form.email }}
       </div>
       <div class="form__item">
         <label for="formTell" class="form__label">Телефон*</label>
-        <input type="tel" name="tel" class="form__input _req _email">
+        {{ form.phone_number }}
       </div>
       <div class="form__item">
         <label for="formNumber" class="form__label">№ Участка*</label>
-        <input  type="number" name="number" class="form__input _req _email">
+        {{ form.area_number }}
       </div>
-
+      <div class="form__item">
+        <label for="formPas" class="form__label">Пароль*</label>
+        {{ form.password1 }}
+      </div>
+      <div class="form__item">
+        <label for="formDublePas" class="form__label">Повторите пароль*</label>
+        {{ form.password2 }}
+      </div>
       <button type="submit" class="form__button">Отправить</button>
-
     </form>
   </div>
 </div>

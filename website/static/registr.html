@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Регистрация</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+	
+
+</head>
+<body>
+	
+	
+		<section class="form">
+			<form action="#" id="form" class="form__body">
+				
+				<div class="form__item">
+					<label for="formSurname" class="form__label">Фамилия*</label>
+					<input type="text" name="nameSurname" class="form__input _req">
+				</div>
+				<div class="form__item">
+					<label for="formName" class="form__label">Имя*</label>
+					<input type="text" name="name" class="form__input _req">
+				</div>
+				<div class="form__item">
+					<label for="formPatronymic" class="form__label">Отчество</label>
+					<input type="text" name="namePatronymic" class="form__input _req">
+				</div>
+				<div class="form__item">
+					<label for="formEmail" class="form__label">E-mail*</label>
+					<input type="text" name="email" class="form__input _req _email">
+				</div>
+				<div class="form__item">
+					<label for="formTell" class="form__label">Телефон*</label>
+					<input type="tel" name="tel" class="form__input _req _email">
+				</div>
+				<div class="form__item">
+                    <div class="form__label">Номер участка:</div>
+                    <div class="select">
+                        <div class="select__header">
+                            <span class="select__current">34</span>
+                            <div class="select__icon">&times;</div>
+                        </div>
+                        <div class="select__body">
+                            <div class="select__item" value="34">34</div>
+                            <div class="select__item" value="34-А">34-А</div>
+                            <div class="select__item" value="69-Б">69-Б</div>
+                            <div class="select__item" value="158. 3 эт.">158. 3 эт.</div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form__item">
+					<label for="formPas" class="form__label">Пароль*</label>
+					<input type="password" name="password" class="form__input _req _email">
+				</div>
+				<div class="form__item">
+					<label for="formDublePas" class="form__label">Повторите пароль*</label>
+					<input type="password" name="passwordDuble" class="form__input _req _email">
+				</div>
+				
+				<button type="submit" class="form__button">Отправить</button>
+
+			</form>
+		</section>
+	
+	<script src="js/selectStyle.js"></script>
+</body>
+</html>

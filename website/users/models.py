@@ -6,11 +6,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class CustomUser(AbstractUser):
-    area_numbers = []
+    area_numbers = [('111', '111'), ('222', '222'), ('333', '333')]
 
+    username = models.CharField(max_length=60, unique=True, verbose_name='Логин')
     first_name = models.CharField(max_length=60, verbose_name='Имя')
     last_name = models.CharField(max_length=60, verbose_name='Фамилия')
     middle_name = models.CharField(max_length=60, verbose_name='Отчество')
     email = models.EmailField()
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-    area_number = models.CharField(choices=area_numbers, default='', max_length=1)
+    area_number = models.CharField(choices=area_numbers, default='', max_length=3)
