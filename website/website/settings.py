@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'main_app',
     'import_export',
+    'phonenumber_field',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,5 @@ else:
     STATIC_ROOT = static_path
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+AUTH_USER_MODEL = 'users.CustomUser'
