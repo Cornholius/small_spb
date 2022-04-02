@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import CustomUser
 from .forms import RegisterForm, LoginForm
+from main_app.models import MeterReadings
 
 
 class RegisterView(View):
@@ -12,16 +13,12 @@ class RegisterView(View):
         self.text = 'Регистрация нового пользователя'
 
     def get(self, request):
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         return render(request, 'pages/registration.html', {'RegisterForm': RegisterForm,
                                                            'LoginForm': LoginForm,
                                                            'text': self.text})
 
     def post(self, request):
         new_user = RegisterForm(request.POST)
-        print(new_user)
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!! POST')
-
         # if CustomUser.objects.filter(username=request.POST.get('username')).exists():
         #     return render(request, 'blog/login_or_register.html', {'form': RegisterForm, 'text': self.text})
         if new_user.is_valid():
@@ -69,5 +66,7 @@ class LkView(View):
     def get(self, request):
         text = 'Личный кабинет'
         user = CustomUser.objects.get(username=request.user)
-        return render(request, 'pages/lk.html', {'user': user, 'text': text})
+        print('>>>>>>>>>>>>>>>>>>>>>>>', user.area_number)
+        meter_reading = MeterReadings.objects.get(area_number=user.area_number)
+        return render(request, 'pages/lk.html', {'user': user, 'text': text, 'meter_reading': meter_reading})
 

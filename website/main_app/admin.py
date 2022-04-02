@@ -1,14 +1,28 @@
 from django.contrib import admin
 from .models import MeterReadings, News, Documents, Debtors, MainPicture, FAQ
 from import_export.admin import ImportExportActionModelAdmin
-
+from import_export import resources, fields
 
 admin.site.site_title = 'ololo1'
 admin.site.site_header = 'ololo2'
 
 
+class MeterReadingsResource(resources.ModelResource):
+
+    area_number = fields.Field(column_name='№ участка', attribute='area_number')
+    personal_account = fields.Field(column_name='№ лицевого счета', attribute='personal_account')
+    current_day = fields.Field(column_name='показания день', attribute='current_day')
+    current_night = fields.Field(column_name='показания ночь', attribute='current_night')
+
+    class Meta:
+        model = MeterReadings
+        exclude = ['id']
+        import_id_fields = ['area_number']
+
+
 @admin.register(MeterReadings)
 class MeterReadingsAdmin(ImportExportActionModelAdmin):
+    resource_class = MeterReadingsResource
     list_display = ('area_number', 'personal_account', 'current_day', 'current_night')
     search_fields = ('area_number', 'personal_account')
     list_editable = ('current_day', 'current_night')

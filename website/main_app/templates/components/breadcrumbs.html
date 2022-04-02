@@ -1,5 +1,5 @@
 {% block box-subtitle %}
-
+{% load my_tags %}
 <div class="breadcrumbs">
     <div class="container">
         <ul class="breadcrumbs__list">
@@ -7,7 +7,7 @@
                 <a class="breadcrumbs__link" href="{% url 'main' %}">Главная</a>
             </li>
             <li class="breadcrumbs__item">
-                <p class="breadcrumbs__link breadcrumbs__link--cursor">Обратная связь</p>
+                <p class="breadcrumbs__link breadcrumbs__link--cursor">{{ obj | to_class_name }}</p>
             </li>
         </ul>
     </div>

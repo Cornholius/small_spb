@@ -16,7 +16,7 @@ class ElectricityTableView(View):
     def get(self, request):
         text = 'Актуальные показания электроэнергии'
         electricity = MeterReadings.objects.all()
-        return render(request, 'pages/electricity.html', {'electricity': electricity, 'text': text})
+        return render(request, 'pages/electricity.html', {'electricity': electricity, 'text': text, 'LoginForm': LoginForm})
 
 
 class NewsView(View):
@@ -32,14 +32,14 @@ class FeedbackView(View):
 
     def get(self, request):
         text = 'Есть вопросы? Свяжитесь с нами'
-        return render(request, 'pages/feedback.html', {'text': text})
+        return render(request, 'pages/feedback.html', {'text': text, 'LoginForm': LoginForm})
 
 
 class ContentView(View):
 
     def get(self, request):
         text = 'Немного о нас'
-        return render(request, 'pages/about_us.html', {'text': text})
+        return render(request, 'pages/about_us.html', {'text': text, 'LoginForm': LoginForm})
 
 
 class DebtorsView(View):
@@ -47,7 +47,7 @@ class DebtorsView(View):
     def get(self, request):
         text = 'Актуальный список должников'
         debtors = Debtors.objects.all()
-        return render(request, 'pages/debtors.html', {'debtors': debtors, 'text': text})
+        return render(request, 'pages/debtors.html', {'debtors': debtors, 'text': text, 'LoginForm': LoginForm})
 
 
 class DocumentsView(View):
@@ -55,7 +55,7 @@ class DocumentsView(View):
     def get(self, request):
         text = 'Список актуальных документов нашего посёлка'
         docs = Documents.objects.all()
-        return render(request, 'pages/documents.html', {'docs': docs, 'text': text})
+        return render(request, 'pages/documents.html', {'docs': docs, 'text': text, 'LoginForm': LoginForm})
 
 
 class FAQView(View):
@@ -63,7 +63,7 @@ class FAQView(View):
     def get(self, request):
         faq = FAQ.objects.all()
         text = 'Ответы на часто задаваемые вопросы'
-        return render(request, 'pages/faq.html', {'faq': faq, 'text': text})
+        return render(request, 'pages/faq.html', {'faq': faq, 'text': text, 'LoginForm': LoginForm})
 
 
 class TestView(View):

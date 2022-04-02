@@ -1,8 +1,33 @@
 {% block footer %}
+
+
+
 <section class="user_datas">
 	<div class="container">
 		<div class="user_info">
 			<h2 class="user_info__title">Личные данные:</h2>
+			<div class="tables table__left">
+				<div class="tables__wrapper table__left">
+					<table class="table">
+						<thead>
+						<tr>
+							<th>№ участка</th>
+							<th>№ лицевого счета </th>
+							<th>счета  текущие показания день</th>
+							<th>текущие показания ночь</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>{{ meter_reading.area_number }}</td>
+							<td>{{ meter_reading.personal_account }}</td>
+							<td>{{ meter_reading.current_day }}</td>
+							<td>{{ meter_reading.current_night }}</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			<div class="user_info__box">
 				<span class="user_info__sub-title">Фамилия Имя Отчество</span>
 				<span class="user_info__info">{{ user.last_name }} {{ user.first_name }} {{ user.middle_name }}</span>
@@ -12,8 +37,16 @@
 				<span class="user_info__info">{{ user.phone_number }}</span>
 				<span class="user_info__sub-title">Почта:</span>
 				<span class="user_info__info">{{ user.email }}</span>
+				<span class="user_info__sub-title">Изменить пароль</span>
 			</div>
 		</div>
+	</div>
+</section>
+<section class="contact-in-personal-area">
+	<div class="container">
+		<h2 class="contact-in-personal-area__title">Обратная связь</h2>
+		<p><a class="contact-in-personal-area__link" href="tel:+78137040300">Телефон: +7(813)704-03-00</a><p>
+		<p><a class="contact-in-personal-area__link" href="mailto:vlad@htmlbook.ru">Email: ririri@mail.ru</a></p>
 	</div>
 </section>
 {% endblock %}

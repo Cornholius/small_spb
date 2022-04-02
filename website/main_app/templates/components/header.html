@@ -5,21 +5,29 @@
         <div class="header__inner">
             <div class="menu">
                 <ul class="menu__list">
-                    {% if request.user.is_authenticated %}
-                    <li class="menu__list-item menu__list-link">Добро пожаловать, {{ request.user.first_name }}</li>
-                    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>
-                    {% else %}
                     <form method="POST" id="RegForm" action="{% url 'login' %}" class="menu__list-item">{% csrf_token %}
                         {{ LoginForm.username }}
                         {{ LoginForm.password }}
                     </form>
                     <li class="menu__list-item" onclick="RegForm.submit();"><p class="menu__list-link">Вход</p></li>
                     <li class="menu__list-item"><a class="menu__list-link" href="{% url 'registration' %}">Регистрация</a></li>
-                    {% endif %}
                 </ul>
-                <p class="menu__list-item menu__list-link">{{ error_text }}</p>
+                <li class="menu__list-item menu__list-link">{{ error_text }}</li>
             </div>
         </div>
     </div>
 </header>
 {% endblock %}
+<!--<ul class="menu__list">-->
+<!--    {% if request.user.is_authenticated %}-->
+<!--    <li class="menu__list-item menu__list-link">Добро пожаловать, {{ request.user.first_name }}</li>-->
+<!--    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>-->
+<!--    {% else %}-->
+<!--    <form method="POST" id="RegForm" action="{% url 'login' %}" class="menu__list-item">{% csrf_token %}-->
+<!--        {{ LoginForm.username }}-->
+<!--        {{ LoginForm.password }}-->
+<!--    </form>-->
+<!--    <li class="menu__list-item" onclick="RegForm.submit();"><p class="menu__list-link">Вход</p></li>-->
+<!--    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'registration' %}">Регистрация</a></li>-->
+<!--    {% endif %}-->
+<!--</ul>-->

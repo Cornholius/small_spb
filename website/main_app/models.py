@@ -8,12 +8,12 @@ from django.urls import reverse
 class MeterReadings(models.Model):
 
     area_number = models.CharField(max_length=60, verbose_name='№ участка')
-    personal_account = models.CharField(max_length=60, verbose_name='№ лицевого счета')
-    current_day = models.IntegerField(default=0, verbose_name='текущие показания день')
-    current_night = models.IntegerField(default=0, verbose_name='текущие показания ночь')
+    personal_account = models.CharField(max_length=60, verbose_name='№ лицевого счета', blank=True, null=True)
+    current_day = models.IntegerField(default=0, verbose_name='текущие показания день', blank=True, null=True)
+    current_night = models.IntegerField(default=0, verbose_name='текущие показания ночь', blank=True, null=True)
 
-    def __str__(self):
-        return self.area_number
+    # def __str__(self):
+    #     return self.area_number
 
     class Meta:
         verbose_name = 'Показания электро энергии'

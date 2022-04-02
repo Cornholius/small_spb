@@ -1,0 +1,14 @@
+{% block header_personal_area %}
+<header class="header__personal_area">
+    <div class="container">
+        <div class="header__personal_area_inner">
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'lk' %}">Личный кабинет</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+{% endblock %}

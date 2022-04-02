@@ -16,9 +16,15 @@
 <body>
 
 <!--  Шапка  -->
-{% block header %}
-{% include 'components/header.html' %}
-{% endblock %}
+{% if request.user.is_authenticated %}
+    {% block header_personal_area %}
+    {% include 'components/header_personal_area.html' %}
+    {% endblock %}
+{% else %}
+    {% block header %}
+    {% include 'components/header.html' %}
+    {% endblock %}
+{% endif %}
 {% block best %}
 {% include 'components/best.html' %}
 {% endblock %}
