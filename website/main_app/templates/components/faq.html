@@ -1,0 +1,13 @@
+{% block faq %}
+<section class="faq">
+    <div class="container">
+        {% for i in faq %}
+        <div class="faq__item">
+            <h3 class="faq__list-title">{{ i.question }}</h3>
+            <p class="faq__item-text">{{ i.answer }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+

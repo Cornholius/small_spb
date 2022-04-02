@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from .models import News, Documents, MeterReadings, Debtors
+from .models import News, Documents, MeterReadings, Debtors, FAQ
 from users.forms import LoginForm
 
 
@@ -56,6 +56,14 @@ class DocumentsView(View):
         text = 'Список актуальных документов нашего посёлка'
         docs = Documents.objects.all()
         return render(request, 'pages/documents.html', {'docs': docs, 'text': text})
+
+
+class FAQView(View):
+
+    def get(self, request):
+        faq = FAQ.objects.all()
+        text = 'Ответы на часто задаваемые вопросы'
+        return render(request, 'pages/faq.html', {'faq': faq, 'text': text})
 
 
 class TestView(View):

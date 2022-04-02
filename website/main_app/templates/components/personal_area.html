@@ -1,0 +1,19 @@
+{% block footer %}
+<section class="user_datas">
+	<div class="container">
+		<div class="user_info">
+			<h2 class="user_info__title">Личные данные:</h2>
+			<div class="user_info__box">
+				<span class="user_info__sub-title">Фамилия Имя Отчество</span>
+				<span class="user_info__info">{{ user.last_name }} {{ user.first_name }} {{ user.middle_name }}</span>
+				<span class="user_info__sub-title">№ участка:</span>
+				<span class="user_info__info">{{ user.area_number }}</span>
+				<span class="user_info__sub-title">Телефон:</span>
+				<span class="user_info__info">{{ user.phone_number }}</span>
+				<span class="user_info__sub-title">Почта:</span>
+				<span class="user_info__info">{{ user.email }}</span>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

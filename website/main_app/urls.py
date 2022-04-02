@@ -11,5 +11,6 @@ urlpatterns = [
     path('feedback/', views.FeedbackView.as_view(), name='feedback'),
     path('debstors/', views.DebtorsView.as_view(), name='debstors'),
     path('documents/', views.DocumentsView.as_view(), name='documents'),
+    path('faq/', views.FAQView.as_view(), name='faq'),
     path('test/', views.TestView.as_view(), name='test'),
 ]

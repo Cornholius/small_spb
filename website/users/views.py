@@ -62,3 +62,12 @@ class LogoutView(View):
     def get(self, request):
         auth.logout(request)
         return redirect('news')
+
+
+class LkView(View):
+
+    def get(self, request):
+        text = 'Личный кабинет'
+        user = CustomUser.objects.get(username=request.user)
+        return render(request, 'pages/lk.html', {'user': user, 'text': text})
+
