@@ -79,3 +79,16 @@ class MainPicture(models.Model):
     class Meta:
         verbose_name = 'Изменяемый объект'
         verbose_name_plural = 'Изменяемые объекты'
+
+
+class FAQ(models.Model):
+    question = models.CharField(default='', max_length=500, verbose_name='Вопрос')
+    answer = models.CharField(default='', max_length=3000, verbose_name='Ответ')
+
+    class Meta:
+        verbose_name = 'Вопрос и ответ'
+        verbose_name_plural = 'Вопросы и ответы'
+        ordering = ['id']
+
+    def __str__(self):
+        return self.question

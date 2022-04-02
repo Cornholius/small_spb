@@ -1,26 +1,29 @@
-from django.contrib import auth
-from django.shortcuts import render
+from django.contrib import auth, messages
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import CustomUser
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 
 
 class RegisterView(View):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.text_button = 'Зарегистрироваться и войти'
+        self.text = 'Регистрация нового пользователя'
 
     def get(self, request):
-        return render(request, 'pages/registration.html', {'form': RegisterForm})
+        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        return render(request, 'pages/registration.html', {'RegisterForm': RegisterForm,
+                                                           'LoginForm': LoginForm,
+                                                           'text': self.text})
 
     def post(self, request):
         new_user = RegisterForm(request.POST)
+        print(new_user)
+        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!! POST')
 
-        if CustomUser.objects.filter(username=request.POST.get('username')).exists():
-            error_text = 'Пользователь с таким логином уже существует'
-            return render(request, 'blog/login_or_register.html', {'form': RegisterForm,
-                                                                   'error': error_text})
+        # if CustomUser.objects.filter(username=request.POST.get('username')).exists():
+        #     return render(request, 'blog/login_or_register.html', {'form': RegisterForm, 'text': self.text})
         if new_user.is_valid():
             new_user.save()
             username = new_user.cleaned_data.get('username')
@@ -29,33 +32,33 @@ class RegisterView(View):
             auth.login(request, user)
             return render(request, 'pages/news.html')
         else:
-            return render(request, 'pages/registration.html', {'form': RegisterForm})
+            messages.error(request, "Invalid data")
+            return render(request, 'pages/registration.html', {'LoginForm': LoginForm, 'form': RegisterForm, 'text': new_user.errors})
 
-# class LoginView(View):
-#
-#     def __init__(self, **kwargs):
-#         super().__init__(**kwargs)
-#         self.text_button = 'Войти'
-#         self.error_text = 'Неверный логин или пароль'
-#
-#     def get(self, request):
-#         return render(request, 'blog/login_or_register.html', {'form': LoginForm, 'button': self.text_button})
-#
-#     def post(self, request):
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         user = auth.authenticate(username=username, password=password)
-#         if user is not None:
-#             auth.login(request, user)
-#             return redirect('../')
-#         else:
-#             return render(request, 'blog/login_or_register.html', {'error': self.error_text,
-#                                                                    'form': LoginForm,
-#                                                                    'button': self.text_button})
-#
-#
-# class LogoutView(View):
-#
-#     def get(self, request):
-#         auth.logout(request)
-#         return redirect('../login')
+
+class LoginView(View):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get(self, request):
+        return render(request, 'pages/news.html')
+
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = auth.authenticate(username=username, password=password)
+        print('>>>>>>>>>>> ', user)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('news')
+        else:
+            error_text = 'Проверьте правильность ввода логина/пароля'
+            return render(request, 'pages/news.html', {'error_text': error_text, 'LoginForm': LoginForm})
+
+
+class LogoutView(View):
+
+    def get(self, request):
+        auth.logout(request)
+        return redirect('news')

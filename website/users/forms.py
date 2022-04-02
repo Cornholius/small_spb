@@ -1,4 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.forms import forms
+
 from .models import CustomUser
 
 
@@ -16,7 +18,7 @@ class RegisterForm(UserCreationForm):
         self.fields['middle_name'].widget.attrs.update({'class': 'form__input _req', 'placeholder': 'Игоревич'})
         self.fields['email'].widget.attrs.update({'class': 'form__input _req _email', 'placeholder': 'example@example.ru'})
         self.fields['phone_number'].widget.attrs.update({'class': 'form__input _req _email', 'placeholder': 'Пример: +71234567890'})
-        self.fields['area_number'].widget.attrs.update({'class': 'form__input _req _email', 'placeholder': 'Выбрать № участка'})
+        self.fields['area_number'].widget.attrs.update({'class': 'select__header', 'placeholder': 'Выбрать № участка'})
         self.fields['password1'].widget.attrs.update({'class': 'form__input _req _email', 'placeholder': 'Пароль'})
         self.fields['password2'].widget.attrs.update({'class': 'form__input _req _email', 'placeholder': 'Повторите пароль'})
         for _ in self.fields:
@@ -32,7 +34,7 @@ class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'input100', 'placeholder': 'Имя пользователя'})
-        self.fields['password'].widget.attrs.update({'class': 'input100', 'placeholder': 'Пароль'})
+        self.fields['username'].widget.attrs.update({'class': 'menu__list-item--input-style', 'placeholder': 'Имя пользователя'})
+        self.fields['password'].widget.attrs.update({'class': 'menu__list-item--input-style', 'placeholder': 'Пароль'})
         self.fields['username'].label = ""
         self.fields['password'].label = ""

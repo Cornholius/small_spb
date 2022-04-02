@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MeterReadings, News, Documents, Debtors, MainPicture
+from .models import MeterReadings, News, Documents, Debtors, MainPicture, FAQ
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -9,7 +9,7 @@ admin.site.site_header = 'ololo2'
 
 @admin.register(MeterReadings)
 class MeterReadingsAdmin(ImportExportActionModelAdmin):
-    list_display = ('id', 'area_number', 'personal_account', 'current_day', 'current_night')
+    list_display = ('area_number', 'personal_account', 'current_day', 'current_night')
     search_fields = ('area_number', 'personal_account')
     list_editable = ('current_day', 'current_night')
 
@@ -43,7 +43,7 @@ class MainPictureAdmin(admin.ModelAdmin):
         return False
 
 
-# admin.site.register(MeterReadings, MeterReadingsAdmin)
+admin.site.register(FAQ)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)
 # admin.site.register(Debtors, DebtorsAdmin)

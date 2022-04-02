@@ -5,11 +5,19 @@
         <div class="header__inner">
             <div class="menu">
                 <ul class="menu__list">
-                    <li class="menu__list-item"><input class="menu__list-item--input-style" type="text" name="login" placeholder="логин"></li>
-                    <li class="menu__list-item"><input class="menu__list-item--input-style" type="text" name="pass" placeholder="пароль"></li>
-                    <li class="menu__list-item"><a class="menu__list-link" href="#">Вход</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="menu__list-item menu__list-link">Добро пожаловать, {{ request.user.first_name }}</li>
+                    <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>
+                    {% else %}
+                    <form method="POST" id="RegForm" action="{% url 'login' %}" class="menu__list-item">{% csrf_token %}
+                        {{ LoginForm.username }}
+                        {{ LoginForm.password }}
+                    </form>
+                    <li class="menu__list-item" onclick="RegForm.submit();"><p class="menu__list-link">Вход</p></li>
                     <li class="menu__list-item"><a class="menu__list-link" href="{% url 'registration' %}">Регистрация</a></li>
+                    {% endif %}
                 </ul>
+                <p class="menu__list-item menu__list-link">{{ error_text }}</p>
             </div>
         </div>
     </div>

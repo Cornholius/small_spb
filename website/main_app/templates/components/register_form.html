@@ -1,45 +1,50 @@
 {% block register_form %}
-<div class="wrapper">
-  <div class="form">
-    <form method="POST" action="#" id="form" class="form__body">{% csrf_token %}
-      <div class="form__item">
-        <label for="formName" class="form__label">Логин*</label>
-        {{ form.username }}
-      </div>
-      <div class="form__item">
-        <label for="formName" class="form__label">Фамилия*</label>
-        {{ form.last_name }}
-      </div>
-      <div class="form__item">
-        <label for="formName" class="form__label">Имя*</label>
-        {{ form.first_name }}
-      </div>
-      <div class="form__item">
-        <label for="formName" class="form__label">Отчество*</label>
-        {{ form.middle_name }}
-      </div>
-      <div class="form__item">
-        <label for="formEmail" class="form__label">E-mail*</label>
-        {{ form.email }}
-      </div>
-      <div class="form__item">
-        <label for="formTell" class="form__label">Телефон*</label>
-        {{ form.phone_number }}
-      </div>
-      <div class="form__item">
-        <label for="formNumber" class="form__label">№ Участка*</label>
-        {{ form.area_number }}
-      </div>
-      <div class="form__item">
-        <label for="formPas" class="form__label">Пароль*</label>
-        {{ form.password1 }}
-      </div>
-      <div class="form__item">
-        <label for="formDublePas" class="form__label">Повторите пароль*</label>
-        {{ form.password2 }}
-      </div>
-      <button type="submit" class="form__button">Отправить</button>
-    </form>
-  </div>
-</div>
+<section class="form" style="background-image: url('/static/images/small_spb/reg_form.jpg');">
+    <div class="form__wrapper">
+        <form method="POST" action="#" id="form" class="form__body">{% csrf_token %}
+            <div class="form__list-wrapper--margin-right">
+                <div class="form__item">
+                    <label for="formSurname" class="form__label">Логин</label>
+                    {{ RegisterForm.username }}
+                </div>
+                <div class="form__item">
+                    <label for="formSurname" class="form__label">Фамилия</label>
+                    {{ RegisterForm.last_name }}
+                </div>
+                <div class="form__item">
+                    <label for="formName" class="form__label">Имя</label>
+                    {{ RegisterForm.first_name }}
+                </div>
+                <div class="form__item">
+                    <label for="formPatronymic" class="form__label">Отчество</label>
+                    {{ RegisterForm.middle_name }}
+                </div>
+                <div class="form__item">
+                    <label for="formEmail" class="form__label">E-mail</label>
+                    {{ RegisterForm.email }}
+                </div> </div>
+            <div class="form__list-wrapper">
+                <div class="form__item">
+                    <label for="formTell" class="form__label">Телефон</label>
+                    {{ RegisterForm.phone_number }}
+                </div>
+
+                <div class="form__item">
+                    <label for="formPas" class="form__label">Пароль</label>
+                    {{ RegisterForm.password1 }}
+                </div>
+                <div class="form__item">
+                    <label for="formDublePas" class="form__label">Повторите пароль</label>
+                    {{ RegisterForm.password2 }}
+                </div>
+                <div class="form__item">
+                    <div class="form__label">Номер участка:</div>
+                    {{ RegisterForm.area_number }}
+                </div>
+
+                <button type="submit" class="form__button">Отправить</button></div>
+
+        </form>
+    </div>
+</section>
 {% endblock %}
