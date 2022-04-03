@@ -45,7 +45,6 @@ class LoginView(View):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
-        print('>>>>>>>>>>> ', user)
         if user is not None:
             auth.login(request, user)
             return redirect('news')
@@ -66,7 +65,6 @@ class LkView(View):
     def get(self, request):
         text = 'Личный кабинет'
         user = CustomUser.objects.get(username=request.user)
-        print('>>>>>>>>>>>>>>>>>>>>>>>', user.area_number)
         meter_reading = MeterReadings.objects.get(area_number=user.area_number)
         return render(request, 'pages/lk.html', {'user': user, 'text': text, 'meter_reading': meter_reading})
 
