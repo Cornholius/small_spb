@@ -108,3 +108,5 @@ class Gallery(models.Model):
     admin_image.allow_tags = True
     admin_image.short_description = 'Превью'
 
+    def __str__(self):
+        return self.photo.name
