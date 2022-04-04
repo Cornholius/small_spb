@@ -1,4 +1,44 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>personal_area</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+	 <link rel="stylesheet" href="css/reset.css">
+	 <link rel="stylesheet" href="css/slick.css">
+	 <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header__personal_area">
+		<div class="container">
+			<div class="header__personal_area_inner">
+				<nav class="menu">
+					<ul class="menu__list">
+						<li class="menu__list-item"><a class="menu__list-link" href="#">Личный кабинет</a></li>
+					
+						<li class="menu__list-item"><a class="menu__list-link" href="#">Выход</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	
+		<div class="breadcrumbs">
+			<div class="container">
+				<ul class="breadcrumbs__list">
+					<li class="breadcrumbs__item">
+						<a class="breadcrumbs__link" href="#">Главная</a>
+					</li>
+					<li class="breadcrumbs__item">
+						<p class="breadcrumbs__link breadcrumbs__link--cursor">Личный кабинет</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	
 		<section class="user_datas">
 			<div class="container">
 				<div class="user_info">
@@ -40,10 +80,16 @@
 						<span class="user_info__info">+7(965)-66-66</span>
 						<span class="user_info__sub-title">Почта:</span>
 						<span class="user_info__info">rtr@mail.ru</span>
-						<span class="user_info__sub-title">Изменить пароль</span>
-						<span class="user_info__info change-password">ooooo</span>
-
 					</div>
+					
+					<form class="user_info__sub-form">
+						<span class="user_info__sub-title">Изменить пароль:</span>
+						<div class="user_info__sub-form--flex"> 
+							<input class="user_info__sub-input" type="password" name="" placeholder="пароль">
+							<input class="user_info__sub-input" type="password" name="" placeholder="новый пароль">
+							<button class="user_info__change-passwor">Изменить пароль</button>
+						</div>
+					</form>
 				</div>
 				
 			</div>
