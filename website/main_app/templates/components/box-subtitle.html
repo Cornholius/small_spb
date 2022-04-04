@@ -1,7 +1,11 @@
 {% block box-subtitle %}
 <section class="box-subtitle">
-        <div class="container">
-            <h3 class="box-subtitle__title title">{{ text }}</h3>
-        </div>
-    </section>
+  <div class="container">
+    {% if request.user.is_authenticated %}
+    <h3 class="box-subtitle__title title">{{ text }}</h3>
+    {% else %}
+    <h3 class="box-subtitle__title title">Зарегистрируйтесь или войдите на сайт, чтобы увидеть все разделы</h3>
+    {% endif %}
+  </div>
+</section>
 {% endblock %}

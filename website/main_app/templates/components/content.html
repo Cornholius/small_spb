@@ -1,15 +1,20 @@
 {% block content %}
-<section class="content" id="content">
-    <div class="container">
-        {% block history %}
-        {% include 'components/history.html' %}
-        {% endblock %}
-        {% block about %}
-        {% include 'components/about.html' %}
-        {% endblock %}
-        {% block requisites %}
-        {% include 'components/requisites.html' %}
-        {% endblock %}
-    </div>
-</section>
+<main class="main">
+    {% block breadcrumbs %}
+    {% include 'components/breadcrumbs.html' %}
+    {% endblock %}
+    <section class="content" id="content">
+        <div class="container">
+            {% block history %}
+            {% include 'components/history.html' %}
+            {% endblock %}
+            {% block about %}
+            {% include 'components/about.html' %}
+            {% endblock %}
+            {% block requisites %}
+            {% include 'components/requisites.html' %}
+            {% endblock %}
+        </div>
+    </section>
+</main>
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib import auth, messages
+from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import CustomUser
@@ -30,7 +31,9 @@ class RegisterView(View):
             return render(request, 'pages/news.html')
         else:
             messages.error(request, "Invalid data")
-            return render(request, 'pages/registration.html', {'LoginForm': LoginForm, 'form': RegisterForm, 'text': new_user.errors})
+            return render(request, 'pages/registration.html', {'LoginForm': LoginForm,
+                                                               'form': RegisterForm,
+                                                               'text': new_user.errors})
 
 
 class LoginView(View):
@@ -50,7 +53,8 @@ class LoginView(View):
             return redirect('news')
         else:
             error_text = 'Проверьте правильность ввода логина/пароля'
-            return render(request, 'pages/news.html', {'error_text': error_text, 'LoginForm': LoginForm})
+            return render(request, 'pages/news.html', {'error_text': error_text,
+                                                       'LoginForm': LoginForm})
 
 
 class LogoutView(View):
@@ -66,5 +70,26 @@ class LkView(View):
         text = 'Личный кабинет'
         user = CustomUser.objects.get(username=request.user)
         meter_reading = MeterReadings.objects.get(area_number=user.area_number)
-        return render(request, 'pages/lk.html', {'user': user, 'text': text, 'meter_reading': meter_reading})
+        return render(request, 'pages/lk.html', {'user': user,
+                                                 'text': text,
+                                                 'meter_reading': meter_reading})
 
+    def post(self, request):
+        text = 'Личный кабинет'
+        user = CustomUser.objects.get(username=request.user)
+        meter_reading = MeterReadings.objects.get(area_number=user.area_number)
+        current_pass = request.POST['currentPassword']
+        new_pass1 = request.POST['newPassword1']
+        new_pass2 = request.POST['newPassword2']
+        if check_password(current_pass, user.password) and new_pass1 == new_pass2:
+            user.set_password(new_pass1)
+            user.save()
+            print('>>>>>>>>>>>>>>> pass saved')
+            flag = 'confirm'
+        else:
+            flag = 'fail'
+
+        return render(request, 'pages/lk.html', {'user': user,
+                                                 'text': text,
+                                                 'meter_reading': meter_reading,
+                                                 flag: True})

@@ -39,12 +39,14 @@
 				<span class="user_info__info">{{ user.email }}</span>
 				<span class="user_info__sub-title">Изменить пароль</span>
 			</div>
-			<form class="user_info__sub-form">
+
+			<form method="post" class="user_info__sub-form">{% csrf_token %}
 				<span class="user_info__sub-title">Изменить пароль:</span>
 				<div class="user_info__sub-form--flex">
-					<input class="user_info__sub-input" type="password" name="" placeholder="пароль">
-					<input class="user_info__sub-input" type="password" name="" placeholder="новый пароль">
-					<button class="user_info__change-passwor">Изменить пароль</button>
+					<input class="user_info__item user_info__sub-input" type="password" name="currentPassword" placeholder="текущий пароль">
+					<input class="user_info__item user_info__sub-input" type="password" name="newPassword1" placeholder="новый пароль">
+					<input class="user_info__item user_info__sub-input" type="password" name="newPassword2" placeholder="повторить пароль">
+					<button class="user_info__item user_info__change-passwor" type="submit">Изменить пароль</button>
 				</div>
 			</form>
 		</div>
@@ -57,4 +59,10 @@
 		<p><a class="contact-in-personal-area__link" href="mailto:vlad@htmlbook.ru">Email: ririri@mail.ru</a></p>
 	</div>
 </section>
+			{% if confirm %}
+			<script>alert('Пароль успешно обновлён')</script>
+			{% endif %}
+			{% if fail %}
+			<script>alert('Проверьте правильность написания пароля')</script>
+			{% endif %}
 {% endblock %}

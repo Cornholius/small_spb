@@ -3,6 +3,7 @@ from pathlib import Path
 from .utils import rename_main_picture
 from django.db import models
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
 class MeterReadings(models.Model):
@@ -92,3 +93,18 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Gallery(models.Model):
+    photo = models.ImageField(upload_to='gallery/', verbose_name='Фото')
+
+    class Meta:
+        verbose_name = 'Фото галереи'
+        verbose_name_plural = 'Фото галереи'
+        ordering = ['-id']
+
+    def admin_image(self):
+        return mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="300"/></a>'.format(self.photo.url))
+    admin_image.allow_tags = True
+    admin_image.short_description = 'Превью'
+

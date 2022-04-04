@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import MeterReadings, News, Documents, Debtors, MainPicture, FAQ
+from .models import *
 from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources, fields
+
 
 admin.site.site_title = 'ololo1'
 admin.site.site_header = 'ololo2'
@@ -57,7 +58,13 @@ class MainPictureAdmin(admin.ModelAdmin):
         return False
 
 
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('photo', 'admin_image')
+    readonly_fields = ('admin_image',)
+
 admin.site.register(FAQ)
+# admin.site.register(Gallery)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)
 # admin.site.register(Debtors, DebtorsAdmin)

@@ -1,0 +1,14 @@
+{% block gallery_list %}
+<main class="main">
+  {% block breadcrumbs %}
+  {% include 'components/breadcrumbs.html' %}
+  {% endblock %}
+  <div class="container">
+    <div class="galery">
+      {% for photo in photos %}
+        <img class="galery__item-img" src="{{photo.photo.url}}" alt="photo">
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}
