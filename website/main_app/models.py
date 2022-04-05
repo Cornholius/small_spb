@@ -1,9 +1,13 @@
 import os
 from pathlib import Path
+
+from PIL import Image
+
 from .utils import rename_main_picture
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from os import path
 
 
 class MeterReadings(models.Model):
@@ -102,6 +106,21 @@ class Gallery(models.Model):
         verbose_name = 'Фото галереи'
         verbose_name_plural = 'Фото галереи'
         ordering = ['-id']
+
+    def save(self, *args, **kwargs):
+        _Max_size = 1080
+        super(Gallery, self).save(*args, **kwargs)
+        filepath = self.photo.path
+        width = self.photo.width
+        height = self.photo.height
+        max_size = max(width, height)
+        image = Image.open(filepath)
+        image = image.resize(
+            (round(width / max_size * _Max_size),
+             round(height / max_size * _Max_size)),
+            Image.ANTIALIAS
+        )
+        image.save(filepath)
 
     def admin_image(self):
         return mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="300"/></a>'.format(self.photo.url))
