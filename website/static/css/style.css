@@ -100,6 +100,7 @@ a{
 }
 .menu__list-item + .menu__list-item{
     margin-left:35px;
+
 }
 .menu__list-item--input-style{
     border: 1px solid #DFDFDF;
@@ -152,25 +153,28 @@ a{
     .menu__list{
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
 
-.menu__list-form{
-   -webkit-box-orient: vertical;
-   -webkit-box-direction: normal;
-       -ms-flex-direction: column;
-           flex-direction: column; 
-}
-
-    
-
-.menu__list-item + .menu__list-item{
+    .menu__list-form{
+     -webkit-box-orient: vertical;
+     -webkit-box-direction: normal;
+     -ms-flex-direction: column;
+     flex-direction: column; 
+    }
+    .menu__list-item + .menu__list-item{
         margin-left:0;
+        margin-bottom:10px ;
     }
+
+
+
+
+
 }
 @media (max-width:360px) {
     .menu__list-link{
@@ -233,7 +237,10 @@ a{
         padding-top:10px ;
     }
     .best{
-        margin-top: -164px;
+        margin-top: -194px;
+    }
+    .best__title{
+           margin-bottom: 110px;
     }
 } 
 @media (max-width:710px) {
@@ -241,14 +248,39 @@ a{
         font-size:40px;
     }
 } 
+@media (max-width: 450px){
+.best__title {
+    font-size: 30px;
+}}
 @media (max-width:520px) {
-    .best__title{
-        font-size:26px;
-    }
+ 
+.best__inner {
+   
+    padding:  40px 0;
+   
 }
+ 
+}
+
+
+@media (max-width: 445px)
+.best__title {
+    font-size: 34px;
+}
+
+
+
+
+
+
+
 @media (max-width:380px) {
+    .best__title {
+    line-height: 0px;
+    ;
+}
     .best__title{
-        font-size:19px;
+        font-size:25px;
     }
 }
 
@@ -992,12 +1024,23 @@ padding-bottom: 40px;
   display: none;
   /* position: absolute; upd: 24.10.2016 */
   position: fixed;
-  max-width: 600px;
-  height: auto;
+  max-width: 850px;
+  height: 600px;
   z-index: 9999;
 }
 #magnify img {
   width: 100%;
+  height: 75vh;
+}
+@media (max-width: 600px){
+    #magnify {
+        max-width: 600px;
+        height: auto;
+    }
+    #magnify img {
+        width: 100%;
+        height: auto;
+    }
 }
 /* затемняющий фон */
 #overlay {
@@ -1376,6 +1419,7 @@ padding-bottom: 40px;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+            padding-top: 10px;
 }
 .debtors__title{
     padding-top:25px;

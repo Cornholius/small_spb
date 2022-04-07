@@ -6,7 +6,7 @@
   <div class="container">
     <div class="galery">
       {% for photo in photos %}
-        <img class="galery__item-img" src="{{photo.photo.url}}" alt="photo">
+        <img class="galery__item-img" data-fancybox="gallery" src="{{photo.photo.url}}" alt="photo">
       {% endfor %}
     </div>
   </div>
