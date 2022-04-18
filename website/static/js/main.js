@@ -1,5 +1,20 @@
 $(function () {
 
+  $('.menu__btn').on('click', () => {
+    if($('.rightside-menu').removeClass('rightside-menu--close')){
+      $('.menu__img').css('display', 'none');
+    }
+    
+});
+$('.rightside-menu__close').on('click', () => {
+  if($('.rightside-menu').addClass('rightside-menu--close')){
+    $('.menu__img').css('display', 'block');
+  }
+});
+
+
+
+
     $(".services__inner").on("click","a", function (event) {
         
   
@@ -21,7 +36,9 @@ $(function () {
 
         hide.toggleClass('news__wrapper--height');  
         if (hide.hasClass('news__wrapper--height')) {
+          
           $(this).html('Скрыть');
+          
         } else {
          $(this).html('Полный текст')
        }   
@@ -31,6 +48,12 @@ $(function () {
 
 
     }); 
+
+  
+
+
+
+
     $('.menu__btn').on('click', function () {
         $('.menu__list').toggleClass('menu__list--active')
     });
