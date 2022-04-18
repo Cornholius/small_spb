@@ -1,8 +1,13 @@
 {% block header_personal_area %}
+{% load static %}
+
 <header class="header__personal_area">
     <div class="container">
         <div class="header__personal_area_inner">
             <nav class="menu">
+                <button class="menu__btn">
+                    <img  class="menu__img" src="{% static 'images/small_spb/icon_menu.svg' %}" alt="icon menu">
+                </button>
                 <ul class="menu__list">
                     <li class="menu__list-item"><a class="menu__list-link" href="{% url 'lk' %}">Личный кабинет</a></li>
                     <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>
@@ -11,4 +16,52 @@
         </div>
     </div>
 </header>
+<div class="rightside-menu rightside-menu--close">
+    <button class="rightside-menu__close">
+        <img src="{% static 'images/small_spb/close.svg' %}" alt="close">
+    </button>
+    <div class="menu-burger">
+        <button class="menu__btn">
+            <img  class="menu__img" src="{% static 'images/small_spb/icon_menu.svg' %}" alt="icon menu">
+        </button>
+    </div>
+    <div class="rightside-menu__content">
+        <ul class="rightside-menu__register-list">
+            <li class="menu__list-item"><a class="menu__list-link" href="{% url 'lk' %}">Личный кабинет</a></li>
+            <li class="menu__list-item"><a class="menu__list-link" href="{% url 'logout' %}">Выход</a></li>
+        </ul>
+        <h5 class="rightside-menu__title">Меню</h5>
+        <ul>
+            {% if request.user.is_authenticated %}
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'news' %}">Новости</a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'electricity' %}">Показания эл.энергии </a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'documents' %}">Документы</a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'debstors' %}">Должники</a>
+            </li>
+            {% endif %}
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'gallery' %}">Галерея</a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'faq' %}">Вопросы и ответы</a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'feedback' %}">Обратная связь</a>
+            </li>
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'content' %}">О нас</a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</div>
 {% endblock %}

@@ -33,12 +33,12 @@
     </div>
     <div class="rightside-menu__content">
         <ul class="rightside-menu__register-list">
-            <form class="rightside-menu__register-item rightside-menu__register-form">
+            <form class="rightside-menu__register-item rightside-menu__register-form" method="POST" id="LoginForm_mob" action="{% url 'login' %}">{% csrf_token %}
                 <li class="rightside-menu__register-item">{{ LoginForm.username }}</li>
                 <li class="rightside-menu__registert-item">{{ LoginForm.password }}</li>
             </form>
-            <li class="rightside-menu__register-item"><a class="rightside-menu__register-link" href="#">Вход</a></li>
-            <li class="rightside-menu__register-item"><a class="rightside-menu__register-link" href="#">Регистрация</a></li>
+            <li class="rightside-menu__register-item" onclick="LoginForm_mob.submit();"><a class="rightside-menu__register-link" href="#">Вход</a></li>
+            <li class="rightside-menu__register-item"><a class="rightside-menu__register-link" href="{% url 'registration' %}">Регистрация</a></li>
         </ul>
         <h5 class="rightside-menu__title">Меню</h5>
         <ul>
