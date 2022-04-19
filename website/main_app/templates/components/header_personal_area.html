@@ -32,20 +32,20 @@
         </ul>
         <h5 class="rightside-menu__title">Меню</h5>
         <ul>
-            {% if request.user.is_authenticated %}
             <li class="rightside-menu__item">
                 <a class="rightside-menu__link" href="{% url 'news' %}">Новости</a>
             </li>
+            {% if request.user.is_authenticated %}
             <li class="rightside-menu__item">
                 <a class="rightside-menu__link" href="{% url 'electricity' %}">Показания эл.энергии </a>
-            </li>
-            <li class="rightside-menu__item">
-                <a class="rightside-menu__link" href="{% url 'documents' %}">Документы</a>
             </li>
             <li class="rightside-menu__item">
                 <a class="rightside-menu__link" href="{% url 'debstors' %}">Должники</a>
             </li>
             {% endif %}
+            <li class="rightside-menu__item">
+                <a class="rightside-menu__link" href="{% url 'documents' %}">Документы</a>
+            </li>
             <li class="rightside-menu__item">
                 <a class="rightside-menu__link" href="{% url 'gallery' %}">Галерея</a>
             </li>
