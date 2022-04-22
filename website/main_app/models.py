@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+from time import sleep
 from PIL import Image
 
 from .utils import rename_main_picture
@@ -68,15 +68,6 @@ class Debtors(models.Model):
 class MainPicture(models.Model):
     BASE_DIR = Path(__file__).resolve().parent.parent
     picture = models.ImageField(upload_to=rename_main_picture, verbose_name='Фото главного экрана')
-
-    def save(self, *args, **kwargs):
-        this = MainPicture.objects.all()
-        for i in this:
-            try:
-                os.remove(os.path.join('media', 'logo', 'logo.jpg'))
-            except Exception:
-                print('nothing to delete')
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return 'Фото главной страницы'
