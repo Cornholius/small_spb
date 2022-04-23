@@ -4,8 +4,8 @@ from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources, fields
 
 
-admin.site.site_title = 'ololo1'
-admin.site.site_header = 'ololo2'
+admin.site.site_title = 'Страница администратора'
+admin.site.site_header = 'Панель управления'
 
 
 class MeterReadingsResource(resources.ModelResource):
