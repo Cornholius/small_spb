@@ -7,7 +7,7 @@
             <div class="news__item">
                 <div class="news__wrapper">
                     <h3 class="news__item-title">{{i.title}}</h3>
-                    <p class="news__item-text">{{i.text}}</p>
+                    <p class="news__item-text">{{i.text|safe}}</p>
                 </div>
                 <p class="news__item-date">{{i.date}}</p>
                 <button class="news-button">Полный текст</button>
