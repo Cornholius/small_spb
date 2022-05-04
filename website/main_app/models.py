@@ -28,7 +28,7 @@ class MeterReadings(models.Model):
 
 class News(models.Model):
     title = models.CharField(max_length=60, verbose_name='Заголовок')
-    text = models.CharField(max_length=3000, verbose_name='Текст новости')
+    text = models.TextField(max_length=3000, verbose_name='Текст новости')
     date = models.DateTimeField(auto_now=True, verbose_name='Дата создания')
 
     def get_absolute_url(self):
