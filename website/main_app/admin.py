@@ -26,7 +26,7 @@ class MeterReadingsAdmin(ImportExportActionModelAdmin):
     resource_class = MeterReadingsResource
     list_display = ('area_number', 'personal_account', 'current_day', 'current_night')
     search_fields = ('area_number', 'personal_account')
-    list_editable = ('current_day', 'current_night')
+    # list_editable = ('current_day', 'current_night')
 
 
 @admin.register(News)
@@ -63,7 +63,9 @@ class GalleryAdmin(admin.ModelAdmin):
     list_display = ('photo', 'admin_image')
     readonly_fields = ('admin_image',)
 
+
 admin.site.register(FAQ)
+admin.site.register(Contact)
 # admin.site.register(Gallery)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)

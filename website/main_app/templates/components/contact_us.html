@@ -13,12 +13,12 @@
                 </div>
             </div>
 
-            <form class="contact__form" action="">
-                <input class="contact__form-input" placeholder="Имя" type="text">
-                <input class="contact__form-input" placeholder="E-mail" type="email">
-                <input class="contact__form-input" placeholder="Тема письма:" type="text">
-                <textarea class="contact__form-area" placeholder="Текст сообщения:"></textarea>
-                <button class="contact__form-btn" type="submit">Отправить</button>
+            <form class="contact__form" method="POST" id="ContactForm" action="">{% csrf_token %}
+                {{ ContactForm.name }}
+                {{ ContactForm.email }}
+                {{ ContactForm.message_title }}
+                {{ ContactForm.message_text }}
+                <button class="contact__form-btn" type="submit" onclick="ContactForm.submit();">Отправить</button>
             </form>
         </div>
     </section>

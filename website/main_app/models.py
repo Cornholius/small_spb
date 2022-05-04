@@ -120,3 +120,13 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.photo.name
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    message_title = models.CharField(max_length=200)
+    message_text = models.TextField(max_length=3000)
+
+    def __str__(self):
+        return self.email

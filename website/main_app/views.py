@@ -1,6 +1,9 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import CreateView
 
+from .forms import ContactForm
 from .models import *
 from users.forms import LoginForm
 
@@ -42,7 +45,36 @@ class FeedbackView(View):
         location = 'Обратная связь'
         return render(request, 'pages/feedback.html', {'text': text,
                                                        'location': location,
-                                                       'LoginForm': LoginForm})
+                                                       'LoginForm': LoginForm,
+                                                       'ContactForm': ContactForm})
+
+    def post(self, request):
+        text = 'Ваше сообщение отправлено'
+        location = 'Обратная связь'
+        data = request.POST
+        subject = data['message_title']
+        content = f"Вам пришло новое сообщение с сайта Малый-Петербург.рф" \
+                  f"\n" \
+                  f"\n" \
+                  f"От: {data['name']}" \
+                  f"\n" \
+                  f"\n" \
+                  f"Тема: {data['message_title']}" \
+                  f"\n" \
+                  f"\n" \
+                  f"Текст сообщения:" \
+                  f"{data['message_text']}"
+        mail_from = data['email']
+        mail_to = ['y.layshkin@gmail.com']
+        try:
+            send_mail(subject, content, mail_from, mail_to)
+        except:
+            print('Сообщение не отправлено')
+        return render(request, 'pages/feedback.html', {'text': text,
+                                                       'location': location,
+                                                       'LoginForm': LoginForm,
+                                                       'ContactForm': ContactForm})
+
 
 
 class ContentView(View):
