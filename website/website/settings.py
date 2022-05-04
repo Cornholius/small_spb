@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'import_export',
     'phonenumber_field',
     'users',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
