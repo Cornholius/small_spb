@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from time import sleep
 from PIL import Image
-
+from tinymce import models as tinymce_models
 from .utils import rename_main_picture
 from django.db import models
 from django.urls import reverse
@@ -28,7 +28,7 @@ class MeterReadings(models.Model):
 
 class News(models.Model):
     title = models.CharField(max_length=60, verbose_name='Заголовок')
-    text = models.TextField(max_length=3000, verbose_name='Текст новости')
+    text = tinymce_models.HTMLField(max_length=8000, verbose_name='Текст новости')
     date = models.DateTimeField(auto_now=True, verbose_name='Дата создания')
 
     def get_absolute_url(self):
