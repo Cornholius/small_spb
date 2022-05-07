@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import CustomUser
 from .forms import RegisterForm, LoginForm
-from main_app.models import MeterReadings
+from main_app.models import MeterReadings, News
 
 
 class RegisterView(View):
@@ -20,20 +20,30 @@ class RegisterView(View):
 
     def post(self, request):
         new_user = RegisterForm(request.POST)
-        # if CustomUser.objects.filter(username=request.POST.get('username')).exists():
-        #     return render(request, 'blog/login_or_register.html', {'form': RegisterForm, 'text': self.text})
+        news = News.objects.all()
+        text = 'Здесь вы можете узнать чем живет наш Малый-Петербург'
+        location = 'Новости'
+
         if new_user.is_valid():
             new_user.save()
             username = new_user.cleaned_data.get('username')
             password = new_user.cleaned_data.get('password2')
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
-            return render(request, 'pages/news.html')
+            return render(request, 'pages/news.html', {'news': news,
+                                                       'text': text,
+                                                       'location': location,
+                                                       'LoginForm': LoginForm})
         else:
             messages.error(request, "Invalid data")
+            errors_list = []
+            for i in new_user.errors:
+                errors_list.append(new_user.errors[i].as_text())
+            errors = '<br>'.join(errors_list)
+            print(errors)
             return render(request, 'pages/registration.html', {'LoginForm': LoginForm,
-                                                               'form': RegisterForm,
-                                                               'text': new_user.errors})
+                                                               'RegisterForm': RegisterForm,
+                                                               'text': errors})
 
 
 class LoginView(View):
@@ -84,7 +94,6 @@ class LkView(View):
         if check_password(current_pass, user.password) and new_pass1 == new_pass2:
             user.set_password(new_pass1)
             user.save()
-            print('>>>>>>>>>>>>>>> pass saved')
             flag = 'confirm'
         else:
             flag = 'fail'
