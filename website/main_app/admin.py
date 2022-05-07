@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.html import format_html
+
 from .models import *
 from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources, fields
@@ -37,8 +39,14 @@ class NewsAdmin(admin.ModelAdmin):
 
 @admin.register(Documents)
 class DocumentsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'document')
     search_fields = ['name']
+
+    def delete_button(self, obj):
+        return format_html('<a class="AdminDeleteBtn" href="/delete/doc/{}/">Удалить</a>', obj.id)
+
+    list_display = ('name', 'document', 'delete_button')
+    delete_button.short_description = ''
+
 
 
 @admin.register(Debtors)

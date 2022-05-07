@@ -1,5 +1,6 @@
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView
 
@@ -109,6 +110,19 @@ class DocumentsView(View):
                                                         'location': location,
                                                         'text': text,
                                                         'LoginForm': LoginForm})
+
+
+class DeleteItemView(View):
+
+    def get(self, request, type=None, id=None):
+        # print(doc)
+        print(type, id)
+        if type == 'doc':
+            docs = Documents.objects.get(id=id)
+            docs.delete()
+        # post_to_delete = Post.objects.get(id=post_id)
+        # post_to_delete.delete()
+        return redirect('../../../admin/main_app/documents/')
 
 
 class FAQView(View):
