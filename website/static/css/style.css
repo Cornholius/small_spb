@@ -19,6 +19,10 @@ a{
     padding: 0 15px;
     margin: 0 auto;
 }
+
+.AdminDeleteBtn {
+    background-color: #232323
+}
 /*-------back_to_top--------------*/
 .back_to_top{
     position: fixed;

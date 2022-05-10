@@ -115,14 +115,19 @@ class DocumentsView(View):
 class DeleteItemView(View):
 
     def get(self, request, type=None, id=None):
-        # print(doc)
-        print(type, id)
-        if type == 'doc':
-            docs = Documents.objects.get(id=id)
-            docs.delete()
-        # post_to_delete = Post.objects.get(id=post_id)
-        # post_to_delete.delete()
-        return redirect('../../../admin/main_app/documents/')
+
+        item_type = {
+            'documents': Documents,
+            'faq': FAQ,
+            'debtors': Debtors,
+            'news': News,
+
+        }
+
+        item = item_type[type].objects.get(id=id)
+        item.delete()
+
+        return redirect(f'../../../admin/main_app/{type}/')
 
 
 class FAQView(View):
