@@ -103,7 +103,7 @@ class FAQAdmin(admin.ModelAdmin):
     delete_button.short_description = ''
 
 # admin.site.register(FAQ)
-admin.site.register(Contact)
+# admin.site.register(Contact)
 # admin.site.register(Gallery)
 # admin.site.register(News, NewsAdmin)
 # admin.site.register(Documents, DocumentsAdmin)
