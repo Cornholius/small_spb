@@ -58,8 +58,8 @@ class Documents(models.Model):
 class Debtors(models.Model):
     payment_order = models.IntegerField(default=0, verbose_name='№ платёжного поручения')
     personal_account = models.CharField(default='', max_length=100, verbose_name='№ лицевого счёта')
-    debtor_fio = models.CharField(default='', max_length=200, verbose_name='ФИО Собственника')
-    last_paid_month = models.CharField(default='', max_length=100, verbose_name='Последний оплаченный месяц')
+    debtor_fio = models.CharField(default='', max_length=200, verbose_name='ФИО Собственника', blank=True, null=True)
+    last_paid_month = models.CharField(default='', max_length=100, verbose_name='Последний оплаченный месяц', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Должник'

@@ -13,6 +13,7 @@
             <tr>
               <th>№ платёжного поручения</th>
               <th>№ лицевого счёта</th>
+              <th>ФИО Собственника</th>
               <th>Ежемесячный взнос/Последний оплаченный месяц</th>
             </tr>
             </thead>
@@ -21,6 +22,7 @@
             <tr>
               <td>{{i.payment_order}}</td>
               <td>{{i.personal_account}}</td>
+              <td>{{i.debtor_fio}}</td>
               <td>{{i.last_paid_month}}</td>
             </tr>
             {% endfor %}
