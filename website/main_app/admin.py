@@ -25,12 +25,13 @@ class MeterReadingsResource(resources.ModelResource):
 class DebtorsResource(resources.ModelResource):
     payment_order = fields.Field(column_name='№ платёжного поручения', attribute='payment_order')
     personal_account = fields.Field(column_name='№ лицевого счёта', attribute='personal_account')
+    debtor_fio = fields.Field(column_name='ФИО Собственника', attribute='debtor_fio')
     last_paid_month = fields.Field(column_name='Последний оплаченный месяц', attribute='last_paid_month')
 
     class Meta:
         model = Debtors
-        exclude = ['id']
-        import_id_fields = ['payment_order']
+        # exclude = ['id']
+        import_id_fields = ['id']
 
 
 @admin.register(MeterReadings)
@@ -70,7 +71,7 @@ class DebtorsAdmin(ImportExportActionModelAdmin):
     def delete_button(self, obj):
         return format_html('<a class="AdminDeleteBtn" href="/delete/debtors/{}/">Удалить</a>', obj.id)
 
-    list_display = ('id', 'payment_order', 'personal_account', 'last_paid_month', 'delete_button')
+    list_display = ('payment_order', 'personal_account', 'debtor_fio', 'last_paid_month', 'delete_button')
     # list_editable = ('payment_order', 'personal_account', 'last_paid_month')
     search_fields = ('payment_order', 'personal_account', 'last_paid_month')
     delete_button.short_description = ''

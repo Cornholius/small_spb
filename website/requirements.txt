@@ -3,8 +3,10 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 Django==3.2.12
 django-cleanup==6.0.0
+django-grappelli==3.0.3
 django-import-export==2.7.1
 django-phonenumber-field==6.1.0
+django-tinymce==3.4.0
 et-xmlfile==1.1.0
 gunicorn==20.1.0
 MarkupPy==1.14
