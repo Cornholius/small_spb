@@ -129,5 +129,10 @@ class Contact(models.Model):
     message_title = models.CharField(max_length=200)
     message_text = models.TextField(max_length=3000)
 
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
+        ordering = ['-id']
+
     def __str__(self):
         return self.email

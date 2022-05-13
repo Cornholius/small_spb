@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView
+from django.contrib import auth, messages
 
 from .forms import ContactForm
 from .models import *
@@ -52,29 +53,41 @@ class FeedbackView(View):
     def post(self, request):
         text = 'Ваше сообщение отправлено'
         location = 'Обратная связь'
-        data = request.POST
-        subject = data['message_title']
-        content = f"Вам пришло новое сообщение с сайта Малый-Петербург.рф" \
-                  f"\n" \
-                  f"\n" \
-                  f"От: {data['name']}" \
-                  f"\n" \
-                  f"\n" \
-                  f"Тема: {data['message_title']}" \
-                  f"\n" \
-                  f"\n" \
-                  f"Текст сообщения:" \
-                  f"{data['message_text']}"
-        mail_from = data['email']
-        mail_to = ['y.layshkin@gmail.com']
-        try:
-            send_mail(subject, content, mail_from, mail_to)
-        except:
-            print('Сообщение не отправлено')
-        return render(request, 'pages/feedback.html', {'text': text,
-                                                       'location': location,
-                                                       'LoginForm': LoginForm,
-                                                       'ContactForm': ContactForm})
+        feedback = ContactForm(request.POST)
+
+        if feedback.is_valid():
+            feedback.save()
+            return render(request, 'pages/feedback.html', {'text': text,
+                                                           'location': location,
+                                                           'LoginForm': LoginForm,
+                                                           'ContactForm': ContactForm})
+
+        #   Если нужна отправка формы на почту:
+        #   (не забудь раскоментить код в settings)
+
+        # data = request.POST
+        # subject = data['message_title']
+        # content = f"Вам пришло новое сообщение с сайта Малый-Петербург.рф" \
+        #           f"\n" \
+        #           f"\n" \
+        #           f"От: {data['name']}" \
+        #           f"\n" \
+        #           f"\n" \
+        #           f"Тема: {data['message_title']}" \
+        #           f"\n" \
+        #           f"\n" \
+        #           f"Текст сообщения:" \
+        #           f"{data['message_text']}"
+        # mail_from = data['email']
+        # mail_to = ['y.layshkin@gmail.com']
+        # try:
+        #     send_mail(subject, content, mail_from, mail_to)
+        # except:
+        #     print('Сообщение не отправлено')
+        # return render(request, 'pages/feedback.html', {'text': text,
+        #                                                'location': location,
+        #                                                'LoginForm': LoginForm,
+        #                                                'ContactForm': ContactForm})
 
 
 

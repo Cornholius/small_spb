@@ -30,7 +30,6 @@ class DebtorsResource(resources.ModelResource):
 
     class Meta:
         model = Debtors
-        # exclude = ['id']
         import_id_fields = ['id']
 
 
@@ -72,7 +71,6 @@ class DebtorsAdmin(ImportExportActionModelAdmin):
         return format_html('<a class="AdminDeleteBtn" href="/delete/debtors/{}/">Удалить</a>', obj.id)
 
     list_display = ('payment_order', 'personal_account', 'debtor_fio', 'last_paid_month', 'delete_button')
-    # list_editable = ('payment_order', 'personal_account', 'last_paid_month')
     search_fields = ('payment_order', 'personal_account', 'last_paid_month')
     delete_button.short_description = ''
 
@@ -103,10 +101,7 @@ class FAQAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'delete_button')
     delete_button.short_description = ''
 
-# admin.site.register(FAQ)
-# admin.site.register(Contact)
-# admin.site.register(Gallery)
-# admin.site.register(News, NewsAdmin)
-# admin.site.register(Documents, DocumentsAdmin)
-# admin.site.register(Debtors, DebtorsAdmin)
-# admin.site.register(MainPicture)
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'message_title', 'message_text', 'email')
