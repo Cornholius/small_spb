@@ -120,10 +120,10 @@ class Gallery(models.Model):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200)
-    message_title = models.CharField(max_length=200)
-    message_text = models.TextField(max_length=3000)
+    name = models.CharField(max_length=200, verbose_name='Имя')
+    email = models.EmailField(max_length=200, verbose_name='Почтовый адрес')
+    message_title = models.CharField(max_length=200, verbose_name='Заголовок')
+    message_text = models.TextField(max_length=3000, verbose_name='Текст сообщения')
 
     class Meta:
         verbose_name = 'Обратная связь'
