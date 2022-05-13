@@ -1,13 +1,10 @@
-import os
 from pathlib import Path
-from time import sleep
 from PIL import Image
 from tinymce import models as tinymce_models
 from .utils import rename_main_picture
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from os import path
 
 
 class MeterReadings(models.Model):
@@ -16,9 +13,6 @@ class MeterReadings(models.Model):
     personal_account = models.CharField(max_length=60, verbose_name='№ лицевого счета', blank=True, null=True)
     current_day = models.IntegerField(default=0, verbose_name='текущие показания день', blank=True, null=True)
     current_night = models.IntegerField(default=0, verbose_name='текущие показания ночь', blank=True, null=True)
-
-    # def __str__(self):
-    #     return self.area_number
 
     class Meta:
         verbose_name = 'Показания электро энергии'
@@ -59,7 +53,8 @@ class Debtors(models.Model):
     payment_order = models.IntegerField(default=0, verbose_name='№ платёжного поручения')
     personal_account = models.CharField(default='', max_length=100, verbose_name='№ лицевого счёта')
     debtor_fio = models.CharField(default='', max_length=200, verbose_name='ФИО Собственника', blank=True, null=True)
-    last_paid_month = models.CharField(default='', max_length=100, verbose_name='Последний оплаченный месяц', blank=True, null=True)
+    last_paid_month = models.CharField(default='', max_length=100, verbose_name='Последний оплаченный месяц',
+                                       blank=True, null=True)
 
     class Meta:
         verbose_name = 'Должник'
@@ -80,7 +75,8 @@ class MainPicture(models.Model):
 
 class FAQ(models.Model):
     question = models.CharField(default='', max_length=500, verbose_name='Вопрос')
-    answer = models.CharField(default='', max_length=3000, verbose_name='Ответ')
+    answer = models.TextField(default='', max_length=3000, verbose_name='Ответ', blank=True, null=True)
+    on_top = models.BooleanField(verbose_name='Отображать в начале списка', default=False)
 
     class Meta:
         verbose_name = 'Вопрос и ответ'

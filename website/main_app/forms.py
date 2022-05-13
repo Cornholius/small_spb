@@ -1,14 +1,12 @@
 from django.forms import ModelForm, forms
 from django.forms import Textarea
-from .models import Contact
+from .models import Contact, FAQ
 
 
 class ContactForm(ModelForm):
 
     class Meta:
-        # Определяем модель, на основе которой создаем форму
         model = Contact
-        # Поля, которые будем использовать для заполнения
         fields = ['name', 'email', 'message_title', 'message_text']
         widgets = {
             'message_text': Textarea(
@@ -26,3 +24,14 @@ class ContactForm(ModelForm):
         self.fields['message_text'].widget.attrs.update({'class': 'contact__form-area', 'placeholder': 'Текст сообщения'})
         self.fields['message_title'].label = ""
         self.fields['message_text'].label = ""
+
+
+class FaqForm(ModelForm):
+
+    class Meta:
+        model = FAQ
+        fields = ['question']
+
+    def __init__(self, *args, **kwargs):
+        super(FaqForm, self).__init__(*args, **kwargs)
+        self.fields['question'].widget.attrs.update({'class': 'faq__inp', 'placeholder': 'Задайте свой вопрос'})

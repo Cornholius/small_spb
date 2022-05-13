@@ -40,7 +40,6 @@ class RegisterView(View):
             for i in new_user.errors:
                 errors_list.append(new_user.errors[i].as_text())
             errors = '<br>'.join(errors_list)
-            print(errors)
             return render(request, 'pages/registration.html', {'LoginForm': LoginForm,
                                                                'RegisterForm': RegisterForm,
                                                                'text': errors})

@@ -1,11 +1,6 @@
-from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import CreateView
-from django.contrib import auth, messages
-
-from .forms import ContactForm
+from .forms import ContactForm, FaqForm
 from .models import *
 from users.forms import LoginForm
 
@@ -90,7 +85,6 @@ class FeedbackView(View):
         #                                                'ContactForm': ContactForm})
 
 
-
 class ContentView(View):
 
     def get(self, request):
@@ -146,13 +140,29 @@ class DeleteItemView(View):
 class FAQView(View):
 
     def get(self, request):
-        faq = FAQ.objects.all()
+        all_questions = FAQ.objects.all()
+        faq_on_top = []
+        faq = []
         text = 'Ответы на часто задаваемые вопросы'
         location = 'Вопросы и ответы'
-        return render(request, 'pages/faq.html', {'faq': faq,
+
+        for question in all_questions:
+            if question.on_top:
+                faq_on_top.append(question)
+            else:
+                faq.append(question)
+        return render(request, 'pages/faq.html', {'faq_on_top': faq_on_top,
+                                                  'faq': faq,
                                                   'text': text,
+                                                  'FaqForm': FaqForm,
                                                   'location': location,
                                                   'LoginForm': LoginForm})
+
+    def post(self, request):
+        question = FaqForm(request.POST)
+        if question.is_valid():
+            question.save()
+        return redirect('faq')
 
 
 class GalleryView(View):
@@ -161,7 +171,6 @@ class GalleryView(View):
         text = 'Наши фотографии'
         location = 'Галерея'
         photos = Gallery.objects.all()
-        print(photos[0])
         return render(request, 'pages/gallery.html', {'photos': photos,
                                                       'text': text,
                                                       'location': location,

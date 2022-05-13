@@ -19,10 +19,6 @@ a{
     padding: 0 15px;
     margin: 0 auto;
 }
-
-.AdminDeleteBtn {
-    background-color: #232323
-}
 /*-------back_to_top--------------*/
 .back_to_top{
     position: fixed;
@@ -413,7 +409,7 @@ a{
 }
 @media (max-width:1290px) {
     .best__title{
-        font-size:60px;
+        font-size:45px;
     }
 }  
 @media (max-width:800px) {
@@ -1536,7 +1532,7 @@ padding-bottom: 40px;
     line-height:27px;
     padding: 6px 50px;
     border:none;
-    background-color: $title;
+    
     border-radius:21px;
   }
 @media (max-width: 710px){
@@ -2052,7 +2048,44 @@ padding-bottom: 40px;
   
 }
 /*------faq--------------*/
-.faq{}
+.faq__search{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+    margin-top:50px;
+    margin-bottom: 10px;
+    
+}
+.faq__inp{
+  
+   
+    border-top-left-radius:20px ;
+    border-bottom-left-radius:20px ;
+    border-color: #2b4074;
+    padding: 5px 10px;
+    width: 75%;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #2b4074;
+}
+.faq__but{
+    border-color: #2b4074;
+    border-left: none;
+  
+    font-family: 'Montserrat', sans-serif;
+    color: #2b4074;
+    border-top-right-radius:20px ;
+    border-bottom-right-radius:20px ;
+    padding-left: 5px;
+    background-color: #FFFFFF;
+}
 .faq__item{
     margin-top: 50px;
     border-bottom:1px solid #2B4074;
