@@ -1,9 +1,11 @@
-from django.forms import ModelForm, forms
+from captcha.fields import CaptchaField
+from django.forms import ModelForm
 from django.forms import Textarea
 from .models import Contact, FAQ
 
 
 class ContactForm(ModelForm):
+    captcha = CaptchaField()
 
     class Meta:
         model = Contact

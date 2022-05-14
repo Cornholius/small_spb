@@ -10,6 +10,7 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', include('main_app.urls')),
     path('user/', include('users.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 
