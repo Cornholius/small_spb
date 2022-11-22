@@ -17,7 +17,7 @@ MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.0.9
 phonenumberslite==8.12.45
-Pillow==9.0.1
+Pillow==9.3.0
 pytz==2022.1
 PyYAML==6.0
 sqlparse==0.4.2
